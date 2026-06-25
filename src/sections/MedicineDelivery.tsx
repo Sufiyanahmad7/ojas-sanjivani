@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { formatINR } from "@/utils";
 import { ShoppingCart, Star, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 export function MedicineDelivery() {
   return (
@@ -40,22 +41,31 @@ export function MedicineDelivery() {
               className="flex flex-col h-full bg-bg-white border border-border-main/50 overflow-hidden"
             >
               {/* Product Header Container */}
-              <div className="relative w-full aspect-[4/3] bg-mint/15 flex items-center justify-center p-6 border-b border-border-main/10 overflow-hidden">
-                {/* Simulated product placeholder box with leaf logo */}
-                <div className="w-20 h-24 bg-bg-white rounded-xl shadow-soft-sm border border-border-main/40 flex flex-col justify-between p-3.5 relative">
-                  <div className="flex justify-between items-start">
-                    <span className="w-2.5 h-2.5 rounded-full bg-accent-emerald animate-pulse" />
-                    <Sparkles className="w-3.5 h-3.5 text-primary" />
+              <div className="relative w-full aspect-[4/3] bg-[#F8FAFC] flex items-center justify-center border-b border-border-main/10 overflow-hidden">
+                {medicine.image ? (
+                  <Image
+                    src={medicine.image}
+                    alt={medicine.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 280px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className="w-20 h-24 bg-bg-white rounded-xl shadow-soft-sm border border-border-main/40 flex flex-col justify-between p-3.5 relative">
+                    <div className="flex justify-between items-start">
+                      <span className="w-2.5 h-2.5 rounded-full bg-accent-emerald animate-pulse" />
+                      <Sparkles className="w-3.5 h-3.5 text-primary" />
+                    </div>
+                    <div className="text-center font-heading text-[8px] font-black text-primary uppercase tracking-widest leading-none">
+                      OJAS <br /> CARE
+                    </div>
+                    <div className="h-1 w-full bg-primary/20 rounded-full" />
                   </div>
-                  <div className="text-center font-heading text-[8px] font-black text-primary uppercase tracking-widest leading-none">
-                    OJAS <br /> CARE
-                  </div>
-                  <div className="h-1 w-full bg-primary/20 rounded-full" />
-                </div>
+                )}
 
                 {/* Tag Overlay */}
                 {medicine.tag && (
-                  <div className="absolute top-3 left-3">
+                  <div className="absolute top-3 left-3 z-10">
                     <Badge variant="success" className="text-[8px] font-bold py-0.5 px-2 bg-bg-white/95 backdrop-blur-sm border border-primary/10">
                       {medicine.tag}
                     </Badge>
