@@ -1,26 +1,144 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Brand Colors - Premium Ojas Sanjivani Palette */
+  --color-primary: #2E7D32;         /* Primary Green (#2E7D32) */
+  --color-primary-hover: #1B5E20;   /* Deep forest green for hover */
+  --color-secondary: #43A047;       /* Secondary Green (#43A047) */
+  --color-secondary-hover: #2E7D32; /* Secondary Hover */
+  --color-light-green: #E8F5E9;     /* Light Green (#E8F5E9) */
+  --color-mint: #F8FFF8;            /* Mint White (#F8FFF8) */
+  --color-bg-white: #FFFFFF;        /* Pure White (#FFFFFF) */
+  --color-text-main: #1F2937;       /* Dark text (#1F2937) */
+  --color-text-secondary: #6B7280;  /* Secondary text (#6B7280) */
+  --color-text-muted: #9CA3AF;      /* Muted gray text (#9CA3AF) */
+  --color-border-main: #E5E7EB;     /* Border gray (#E5E7EB) */
+
+  /* Accent Colors (the 5% for highlight/contrast) */
+  --color-accent-amber: #D97706;    /* Amber/Gold for Ayurvedic vitality */
+  --color-accent-emerald: #059669;  /* Emerald for natural healing/homeopathy */
+  --color-accent-rose: #E11D48;     /* Rose for online medicine delivery/care */
+  --color-accent-sky: #0EA5E9;      /* Sky Blue for AI health assistant */
+  --color-accent-indigo: #4F46E5;   /* Indigo for tech/modern consultations */
+
+  /* Premium Border Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;                /* 20px (Requested: 20-24px) */
+  --radius-2xl: 24px;               /* 24px (Requested: 20-24px) */
+  --radius-3xl: 32px;               /* Large rounded elements */
+  --radius-full: 9999px;            /* Pill buttons & circular icons */
+
+  /* Premium Spacing Tokens */
+  --spacing-container-max: 1280px;
+
+  /* Soft, Luxury, Organic Shadows */
+  --shadow-soft-sm: 0 2px 8px rgba(46, 125, 50, 0.03);
+  --shadow-soft-md: 0 8px 24px rgba(46, 125, 50, 0.05);
+  --shadow-soft-lg: 0 16px 40px rgba(46, 125, 50, 0.08);
+  --shadow-soft-xl: 0 24px 60px rgba(46, 125, 50, 0.12);
+  --shadow-glass: 0 8px 32px 0 rgba(46, 125, 50, 0.04);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #FFFFFF;
+  --foreground: #1F2937;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
+
+/* Custom Scrollbar for Premium Feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-mint);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-light-green);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Container Utility */
+.custom-container {
+  width: 100%;
+  max-width: var(--spacing-container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .custom-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .custom-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Glassmorphism Classes */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(46, 125, 50, 0.08);
+}
+
+.glassmorphism-mint {
+  background: rgba(248, 255, 248, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(46, 125, 50, 0.06);
+}
+
+/* Custom CSS Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+

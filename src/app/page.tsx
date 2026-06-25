@@ -1,65 +1,66 @@
-import Image from "next/image";
+import React from "react";
+import { Header } from "@/sections/Header";
+import { Hero } from "@/sections/Hero";
+import { TrustIndicators } from "@/sections/TrustIndicators";
+import { ServicesOverview } from "@/sections/ServicesOverview";
+import { Diseases } from "@/sections/Diseases";
+import { AIAssistantCallout } from "@/sections/AIAssistantCallout";
+import { WhyChooseUs } from "@/sections/WhyChooseUs";
+import { DoctorsList } from "@/sections/DoctorsList";
+import { PatientStories } from "@/sections/PatientStories";
+import { MedicineDelivery } from "@/sections/MedicineDelivery";
+import { AppointmentForm } from "@/sections/AppointmentForm";
+import { FAQs } from "@/sections/FAQs";
+import { Footer } from "@/sections/Footer";
+import { FloatingWidgets } from "@/sections/FloatingWidgets";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="min-h-screen bg-bg-white font-sans antialiased text-text-main relative">
+      {/* Sticky Header (Announcement Bar + Main Navbar) */}
+      <Header />
+
+      {/* Main Content Layout with top padding to prevent content from hiding behind the sticky header */}
+      <main className="relative" style={{ paddingTop: "130px" }}>
+        {/* 3. Hero Banner */}
+        <Hero />
+
+        {/* 4. Trust Indicators */}
+        <TrustIndicators />
+
+        {/* 5. Ayurveda & Homeopathy Cards (Services Overview) */}
+        <ServicesOverview />
+
+        {/* 6. Disease Categories */}
+        <Diseases />
+
+        {/* 7. AI Health Assistant Section */}
+        <AIAssistantCallout />
+
+        {/* 8. Why Choose Ojas Sanjivani */}
+        <WhyChooseUs />
+
+        {/* 9. Doctor Profiles */}
+        <DoctorsList />
+
+        {/* 10. Patient Stories */}
+        <PatientStories />
+
+        {/* 11. Online Medicine Delivery */}
+        <MedicineDelivery />
+
+        {/* 12. Appointment Form */}
+        <AppointmentForm />
+
+        {/* 13. FAQs */}
+        <FAQs />
       </main>
+
+      {/* 14. Footer */}
+      <Footer />
+
+      {/* 15. Floating Action Widgets (AI assistant + official WhatsApp) */}
+      <FloatingWidgets />
     </div>
   );
 }
