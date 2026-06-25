@@ -9,14 +9,16 @@ import { WhyChooseUs } from "@/sections/WhyChooseUs";
 import { DoctorsList } from "@/sections/DoctorsList";
 import { PatientStories } from "@/sections/PatientStories";
 import { MedicineDelivery } from "@/sections/MedicineDelivery";
-import { AppointmentForm } from "@/sections/AppointmentForm";
+import { AppointmentBooking } from "@/components/home/AppointmentBooking";
 import { FAQs } from "@/sections/FAQs";
 import { Footer } from "@/sections/Footer";
 import { FloatingWidgets } from "@/sections/FloatingWidgets";
+import { ScrollToTopOnLoad } from "@/components/common/ScrollToTopOnLoad";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-bg-white font-sans antialiased text-text-main relative">
+      <ScrollToTopOnLoad />
       {/* Sticky Header (Announcement Bar + Main Navbar) */}
       <Header />
 
@@ -50,7 +52,7 @@ export default function Home() {
         <MedicineDelivery />
 
         {/* 12. Appointment Form */}
-        <AppointmentForm />
+        <AppointmentBooking />
 
         {/* 13. FAQs */}
         <FAQs />

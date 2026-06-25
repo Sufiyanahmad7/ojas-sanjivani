@@ -15,7 +15,7 @@ export function FAQs() {
   };
 
   return (
-    <section id="faqs" className="py-24 bg-bg-white relative">
+    <section id="faqs" className="py-12 sm:py-14 bg-bg-white relative">
       <div className="custom-container max-w-4xl space-y-16">
         
         {/* Section Header */}

@@ -11,7 +11,7 @@ import { Star, ShieldCheck, Award, Calendar } from "lucide-react";
 
 export function DoctorsList() {
   return (
-    <section id="doctors" className="py-24 bg-bg-white relative">
+    <section id="doctors" className="py-12 sm:py-14 bg-bg-white relative">
       <div className="custom-container space-y-16">
         
         {/* Section Header */}

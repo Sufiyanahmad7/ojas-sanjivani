@@ -20,7 +20,7 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
 
 export function WhyChooseUs() {
   return (
-    <section className="py-24 bg-mint/10 border-y border-border-main/30 relative">
+    <section className="py-12 sm:py-14 bg-mint/10 border-y border-border-main/30 relative">
       <div className="custom-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         
         {/* Left Column: Title & Key Narrative */}

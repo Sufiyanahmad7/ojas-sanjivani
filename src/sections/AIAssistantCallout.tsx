@@ -41,7 +41,7 @@ export function AIAssistantCallout() {
   };
 
   return (
-    <section id="ai-assistant" className="py-24 bg-bg-white relative overflow-hidden">
+    <section id="ai-assistant" className="py-12 sm:py-14 bg-bg-white relative overflow-hidden">
       {/* Decorative gradients */}
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-primary/5 rounded-full filter blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-secondary/5 rounded-full filter blur-3xl pointer-events-none" />

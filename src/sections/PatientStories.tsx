@@ -25,7 +25,7 @@ export function PatientStories() {
       });
 
   return (
-    <section id="stories" className="py-24 bg-mint/10 border-y border-border-main/30 relative">
+    <section id="stories" className="py-12 sm:py-14 bg-mint/10 border-y border-border-main/30 relative">
       <div className="custom-container space-y-12">
         
         {/* Section Header */}
