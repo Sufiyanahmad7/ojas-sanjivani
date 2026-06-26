@@ -99,7 +99,7 @@ export function ContactForm() {
   };
 
   return (
-    <div id="booking-form" className="bg-white border border-border-main/55 rounded-2xl shadow-soft-lg p-4 sm:p-5 relative overflow-hidden h-full flex flex-col justify-start">
+    <div id="booking-form" className="bg-white border border-border-main/55 rounded-2xl shadow-soft-lg p-4 sm:p-5 relative overflow-hidden h-full flex flex-col justify-start scroll-mt-28">
       
       {/* Header */}
       <div className="mb-3 text-left">

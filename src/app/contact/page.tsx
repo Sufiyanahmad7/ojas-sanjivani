@@ -112,7 +112,7 @@ export default function ContactPage() {
                 {/* Primary & Secondary Call to Actions */}
                 <div className="flex flex-col sm:flex-row items-center gap-4 pt-2 w-full sm:w-auto">
                   <a
-                    href="#booking-form-section"
+                    href="#booking-form"
                     className="w-full sm:w-auto inline-flex h-12 px-6 items-center justify-center rounded-xl bg-[#028174] hover:bg-[#01695F] text-white font-extrabold text-sm shadow-soft-md transition-all duration-300"
                   >
                     Book Free Consultation
@@ -189,7 +189,7 @@ export default function ContactPage() {
                 title="Book Appointment"
                 description="Schedule your consultation with our doctors."
                 buttonText="Book Consultation"
-                actionUrl="#booking-form-section"
+                actionUrl="#booking-form"
               />
 
             </div>
@@ -248,7 +248,7 @@ export default function ContactPage() {
 
                 <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
                   <a
-                    href="#booking-form-section"
+                    href="#booking-form"
                     className="w-full sm:w-auto inline-flex h-12 px-6 items-center justify-center rounded-xl bg-white text-[#028174] hover:bg-slate-100 font-extrabold text-sm shadow-soft-sm transition-all cursor-pointer"
                   >
                     Book Free Consultation

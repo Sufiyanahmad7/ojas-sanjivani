@@ -19,6 +19,12 @@ export function Navbar({ scrolled = false }: NavbarProps) {
   const router = useRouter();
   const pathname = usePathname();
 
+  const ctaHref = pathname === "/contact"
+    ? "#booking-form"
+    : pathname === "/"
+    ? "#appointment"
+    : "/contact#booking-form";
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [diseasesOpen, setDiseasesOpen] = useState(false);
   const [treatmentsOpen, setTreatmentsOpen] = useState(false);
@@ -211,7 +217,7 @@ export function Navbar({ scrolled = false }: NavbarProps) {
             <Button
               variant="primary"
               className="h-12 px-7 rounded-full bg-[#028174] hover:bg-[#01695F] text-white font-semibold transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 flex items-center gap-2 text-xs"
-              href="#appointment"
+              href={ctaHref}
             >
               Book Free Consultation <ArrowRight className="w-4 h-4" />
             </Button>
@@ -391,7 +397,7 @@ export function Navbar({ scrolled = false }: NavbarProps) {
                   className="w-full h-12 justify-center rounded-full bg-[#028174] text-white font-bold text-sm shadow-md"
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    window.location.href = "#appointment";
+                    window.location.href = ctaHref;
                   }}
                 >
                   Book Free Consultation
