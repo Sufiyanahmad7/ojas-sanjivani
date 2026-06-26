@@ -1,8 +1,66 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { MessageCircle, Sparkles, X, Send, Bot, User, PhoneCall } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, PhoneCall } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
+function SupportAgentIcon({ className = "w-8 h-8" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* User Shoulder (solid white) */}
+      <path 
+        d="M6 21c0-2.8 2.7-5 6-5s6 2.2 6 5H6z" 
+        fill="#FFFFFF" 
+      />
+      
+      {/* User Head (solid white) */}
+      <circle 
+        cx="12" 
+        cy="10.5" 
+        r="4" 
+        fill="#FFFFFF" 
+      />
+      
+      {/* Headset Arc (dark outline) */}
+      <path 
+        d="M7.5 10.5c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5" 
+        stroke="#111827" 
+        strokeWidth="2.2" 
+        fill="none" 
+        strokeLinecap="round"
+      />
+      
+      {/* Ear Cups (dark rects) */}
+      <rect x="5.8" y="9" width="1.8" height="3.5" rx="0.8" fill="#111827" />
+      <rect x="16.4" y="9" width="1.8" height="3.5" rx="0.8" fill="#111827" />
+      
+      {/* Mic Stem (dark line) */}
+      <path 
+        d="M16.5 11.5c0 1.5-1.2 2.5-2.5 2.5h-1.5" 
+        stroke="#111827" 
+        strokeWidth="1.5" 
+        fill="none" 
+        strokeLinecap="round"
+      />
+      
+      {/* Speech/Chat Bubble at bottom right (solid purple) */}
+      <path 
+        d="M14.5 15h3.2a1.3 1.3 0 0 1 1.3 1.3v1a0.5 0 0 1-.85.35l-.45-.45h-3.2a1.3 1.3 0 0 1-1.3-1.3v-.3a1.3 1.3 0 0 1 1.3-1.3z" 
+        fill="#A855F7" 
+      />
+      
+      {/* Three white dots inside the purple speech bubble */}
+      <circle cx="15.2" cy="16.2" r="0.3" fill="#FFFFFF" />
+      <circle cx="16.2" cy="16.2" r="0.3" fill="#FFFFFF" />
+      <circle cx="17.2" cy="16.2" r="0.3" fill="#FFFFFF" />
+    </svg>
+  );
+}
 
 export function FloatingWidgets() {
   const [isAiOpen, setIsAiOpen] = useState(false);
@@ -61,156 +119,10 @@ export function FloatingWidgets() {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 md:bottom-6 md:right-6 z-[9999] flex flex-col items-end gap-4 pointer-events-none">
-      
-      {/* Digital Assistant Chat Modal */}
-      <AnimatePresence>
-        {isAiOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="w-[330px] sm:w-[360px] h-[450px] sm:h-[480px] bg-white rounded-2xl shadow-2xl border border-[#F3F4F6] flex flex-col overflow-hidden pointer-events-auto mb-2"
-          >
-            {/* Header */}
-            <div className="bg-[#028174] p-4 text-white flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center">
-                  <Bot className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h4 className="font-heading text-sm font-bold leading-tight">Ojas Wellness Guide</h4>
-                  <span className="text-[10px] text-white/75 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    Online | Ayurvedic Expert
-                  </span>
-                </div>
-              </div>
-              <button
-                onClick={() => setIsAiOpen(false)}
-                className="p-1 rounded-lg hover:bg-white/10 text-white transition-colors cursor-pointer"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-[#F8FFF8]/40 custom-scrollbar">
-              {messages.map((msg) => (
-                <div
-                  key={msg.id}
-                  className={`flex gap-2 max-w-[85%] ${
-                    msg.sender === "user" ? "ml-auto flex-row-reverse" : "mr-auto"
-                  }`}
-                >
-                  <div
-                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs ${
-                      msg.sender === "user"
-                        ? "bg-[#E6F3F2] text-[#028174]"
-                        : "bg-[#028174] text-white"
-                    }`}
-                  >
-                    {msg.sender === "user" ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
-                  </div>
-                  <div
-                    className={`p-3 rounded-2xl text-xs leading-relaxed ${
-                      msg.sender === "user"
-                        ? "bg-[#028174] text-white rounded-tr-none"
-                        : "bg-white text-[#374151] border border-[#F3F4F6] rounded-tl-none shadow-sm"
-                    }`}
-                  >
-                    {msg.text}
-                  </div>
-                </div>
-              ))}
-              {isTyping && (
-                <div className="flex gap-2 max-w-[80%] mr-auto">
-                  <div className="w-7 h-7 rounded-full bg-[#028174] text-white flex items-center justify-center shrink-0">
-                    <Bot className="w-3.5 h-3.5" />
-                  </div>
-                  <div className="bg-white border border-[#F3F4F6] p-3 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 bg-[#9CA3AF] rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                    <span className="w-1.5 h-1.5 bg-[#9CA3AF] rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                    <span className="w-1.5 h-1.5 bg-[#9CA3AF] rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
-                  </div>
-                </div>
-              )}
-              <div ref={chatEndRef} />
-            </div>
-
-            {/* Quick Replies */}
-            {messages.length === 1 && (
-              <div className="px-4 py-2 flex flex-wrap gap-1.5 bg-[#F8FFF8]/40 border-t border-[#F3F4F6]/50">
-                {quickReplies.map((reply) => (
-                  <button
-                    key={reply.text}
-                    onClick={() => handleSend(reply.text)}
-                    className="text-[10px] font-bold text-[#028174] bg-white border border-[#E6F3F2] px-2.5 py-1.5 rounded-full hover:bg-[#F4FAF9] transition-colors cursor-pointer"
-                  >
-                    {reply.text}
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {/* Input Form */}
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleSend(input);
-              }}
-              className="p-3 border-t border-[#F3F4F6] bg-white flex gap-2"
-            >
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask Ojas Wellness about health..."
-                className="flex-1 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl px-3 text-xs focus:outline-none focus:border-[#028174] focus:ring-2 focus:ring-[#028174]/10"
-              />
-              <button
-                type="submit"
-                className="w-9 h-9 rounded-xl bg-[#028174] hover:bg-[#01695F] text-white flex items-center justify-center shrink-0 transition-colors cursor-pointer"
-              >
-                <Send className="w-4 h-4" />
-              </button>
-            </form>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Widgets Action Container (Pointer events auto to allow interaction) */}
-      <div className="flex flex-col gap-4 pointer-events-auto">
-        {/* 1. Digital Health Assistant Floating Circular Button */}
-        <div className="relative group flex justify-end">
-          <motion.button
-            onClick={() => setIsAiOpen(!isAiOpen)}
-            className="w-14 h-14 rounded-full bg-[#028174] text-white shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 relative cursor-pointer"
-            aria-label="Open Wellness Assistant"
-            animate={{
-              boxShadow: [
-                "0 4px 20px rgba(2, 129, 116, 0.2)",
-                "0 4px 30px rgba(2, 129, 116, 0.4)",
-                "0 4px 20px rgba(2, 129, 116, 0.2)",
-              ],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <Sparkles className="w-6 h-6 animate-pulse" />
-          </motion.button>
-
-          {/* Hover Tooltip */}
-          <span className="absolute right-full mr-3.5 top-1/2 -translate-y-1/2 bg-white text-[#1F2937] text-[10px] font-bold py-1.5 px-3 rounded-lg shadow-lg border border-[#F3F4F6] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 whitespace-nowrap">
-            Wellness Assistant • Start a conversation
-          </span>
-        </div>
-
-        {/* 2. Official WhatsApp Floating Logo Button */}
-        <div className="relative group flex justify-end">
+    <>
+      {/* LEFT WIDGET: WhatsApp Floating Button */}
+      <div className="fixed bottom-4 left-4 sm:bottom-5 sm:left-5 md:bottom-6 md:left-6 z-[9999] pointer-events-auto">
+        <div className="relative group">
           <motion.a
             href="https://wa.me/919766548692"
             target="_blank"
@@ -221,13 +133,163 @@ export function FloatingWidgets() {
             {officialWhatsAppSvg}
           </motion.a>
 
-          {/* Hover Tooltip */}
-          <span className="absolute right-full mr-3.5 top-1/2 -translate-y-1/2 bg-white text-[#1F2937] text-[10px] font-bold py-1.5 px-3 rounded-lg shadow-lg border border-[#F3F4F6] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 whitespace-nowrap">
+          {/* Hover Tooltip (appears on the right side) */}
+          <span className="absolute left-full ml-3.5 top-1/2 -translate-y-1/2 bg-white text-[#1F2937] text-[10px] font-bold py-1.5 px-3 rounded-lg shadow-lg border border-[#F3F4F6] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 whitespace-nowrap">
             Chat on WhatsApp
           </span>
         </div>
       </div>
 
-    </div>
+      {/* RIGHT WIDGET: AI Assistant Chat Trigger + Modal */}
+      <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 md:bottom-6 md:right-6 z-[9999] flex flex-col items-end gap-4 pointer-events-none">
+        
+        {/* Digital Assistant Chat Modal */}
+        <AnimatePresence>
+          {isAiOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.95 }}
+              className="w-[330px] sm:w-[360px] h-[450px] sm:h-[480px] bg-white rounded-2xl shadow-2xl border border-[#F3F4F6] flex flex-col overflow-hidden pointer-events-auto mb-2"
+            >
+              {/* Header */}
+              <div className="bg-[#028174] p-4 text-white flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center">
+                    <Bot className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-heading text-sm font-bold leading-tight">Ojas Wellness Guide</h4>
+                    <span className="text-[10px] text-white/75 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Online | Ayurvedic Expert
+                    </span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsAiOpen(false)}
+                  className="p-1 rounded-lg hover:bg-white/10 text-white transition-colors cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Messages Area */}
+              <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-[#F8FFF8]/40 custom-scrollbar">
+                {messages.map((msg) => (
+                  <div
+                    key={msg.id}
+                    className={`flex gap-2 max-w-[85%] ${
+                      msg.sender === "user" ? "ml-auto flex-row-reverse" : "mr-auto"
+                    }`}
+                  >
+                    <div
+                      className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs ${
+                        msg.sender === "user"
+                          ? "bg-[#E6F3F2] text-[#028174]"
+                          : "bg-[#028174] text-white"
+                      }`}
+                    >
+                      {msg.sender === "user" ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
+                    </div>
+                    <div
+                      className={`p-3 rounded-2xl text-xs leading-relaxed ${
+                        msg.sender === "user"
+                          ? "bg-[#028174] text-white rounded-tr-none"
+                          : "bg-white text-[#374151] border border-[#F3F4F6] rounded-tl-none shadow-sm"
+                      }`}
+                    >
+                      {msg.text}
+                    </div>
+                  </div>
+                ))}
+                {isTyping && (
+                  <div className="flex gap-2 max-w-[80%] mr-auto">
+                    <div className="w-7 h-7 rounded-full bg-[#028174] text-white flex items-center justify-center shrink-0">
+                      <Bot className="w-3.5 h-3.5" />
+                    </div>
+                    <div className="bg-white border border-[#F3F4F6] p-3 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 bg-[#9CA3AF] rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                      <span className="w-1.5 h-1.5 bg-[#9CA3AF] rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                      <span className="w-1.5 h-1.5 bg-[#9CA3AF] rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                    </div>
+                  </div>
+                )}
+                <div ref={chatEndRef} />
+              </div>
+
+              {/* Quick Replies */}
+              {messages.length === 1 && (
+                <div className="px-4 py-2 flex flex-wrap gap-1.5 bg-[#F8FFF8]/40 border-t border-[#F3F4F6]/50">
+                  {quickReplies.map((reply) => (
+                    <button
+                      key={reply.text}
+                      onClick={() => handleSend(reply.text)}
+                      className="text-[10px] font-bold text-[#028174] bg-white border border-[#E6F3F2] px-2.5 py-1.5 rounded-full hover:bg-[#F4FAF9] transition-colors cursor-pointer"
+                    >
+                      {reply.text}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Input Form */}
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSend(input);
+                }}
+                className="p-3 border-t border-[#F3F4F6] bg-white flex gap-2"
+              >
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder="Ask Ojas Wellness about health..."
+                  className="flex-1 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl px-3 text-xs focus:outline-none focus:border-[#028174] focus:ring-2 focus:ring-[#028174]/10"
+                />
+                <button
+                  type="submit"
+                  className="w-9 h-9 rounded-xl bg-[#028174] hover:bg-[#01695F] text-white flex items-center justify-center shrink-0 transition-colors cursor-pointer"
+                >
+                  <Send className="w-4 h-4" />
+                </button>
+              </form>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* AI button inside interactive sub-container */}
+        <div className="pointer-events-auto">
+          <div className="relative group flex justify-end">
+            <motion.button
+              onClick={() => setIsAiOpen(!isAiOpen)}
+              className="w-14 h-14 rounded-full bg-[#028174] text-white shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 relative cursor-pointer"
+              aria-label="Open Wellness Assistant"
+              animate={{
+                boxShadow: [
+                  "0 4px 20px rgba(2, 129, 116, 0.2)",
+                  "0 4px 30px rgba(2, 129, 116, 0.4)",
+                  "0 4px 20px rgba(2, 129, 116, 0.2)",
+                ],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <SupportAgentIcon className="w-8 h-8" />
+            </motion.button>
+
+            {/* Hover Tooltip */}
+            <span className="absolute right-full mr-3.5 top-1/2 -translate-y-1/2 bg-white text-[#1F2937] text-[10px] font-bold py-1.5 px-3 rounded-lg shadow-lg border border-[#F3F4F6] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 whitespace-nowrap">
+              Support Assistant • Start a conversation
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </>
   );
 }
