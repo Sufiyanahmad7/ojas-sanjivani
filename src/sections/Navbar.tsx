@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
@@ -14,32 +16,47 @@ interface NavbarProps {
 }
 
 export function Navbar({ scrolled = false }: NavbarProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [diseasesOpen, setDiseasesOpen] = useState(false);
   const [treatmentsOpen, setTreatmentsOpen] = useState(false);
   const [mobileDiseasesAccordion, setMobileDiseasesAccordion] = useState(false);
   const [mobileTreatmentsAccordion, setMobileTreatmentsAccordion] = useState(false);
 
+  const handleHomeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (pathname === "/") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      router.push("/");
+    }
+  };
+
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "About", href: "#why-choose-us" },
-    { label: "Diseases", href: "#diseases", dropdown: "diseases" },
-    { label: "Treatments", href: "#services", dropdown: "treatments" },
-    { label: "Medicine", href: "#pharmacy" },
-    { label: "Blog", href: "#stories" },
-    { label: "Contact", href: "#appointment" },
+    { label: "About", href: "/about" },
+    { label: "Diseases", href: "/#diseases", dropdown: "diseases" },
+    { label: "Treatments", href: "/#services", dropdown: "treatments" },
+    { label: "Medicine", href: "/#pharmacy" },
+    { label: "Blog", href: "/#stories" },
+    { label: "Contact", href: "/#appointment" },
   ];
 
   const mobileDiseases = [
-    { name: "Diabetes", href: "#appointment" },
-    { name: "Hypertension", href: "#appointment" },
-    { name: "Obesity", href: "#appointment" },
-    { name: "Thyroid", href: "#appointment" },
-    { name: "Acidity", href: "#appointment" },
-    { name: "IBS", href: "#appointment" },
-    { name: "Arthritis", href: "#appointment" },
-    { name: "PCOS", href: "#appointment" },
-    { name: "Skin Problems", href: "#appointment" },
+    { name: "Diabetes", href: "/#appointment" },
+    { name: "Hypertension", href: "/#appointment" },
+    { name: "Obesity", href: "/#appointment" },
+    { name: "Thyroid", href: "/#appointment" },
+    { name: "Acidity", href: "/#appointment" },
+    { name: "IBS", href: "/#appointment" },
+    { name: "Arthritis", href: "/#appointment" },
+    { name: "PCOS", href: "/#appointment" },
+    { name: "Skin Problems", href: "/#appointment" },
   ];
 
   const mobileTreatments = [
@@ -56,17 +73,20 @@ export function Navbar({ scrolled = false }: NavbarProps) {
   return (
     <>
       <nav
-        className={`w-full bg-white transition-all duration-300 ${
-          scrolled
+        className={`w-full bg-white transition-all duration-300 ${scrolled
             ? "h-[72px] border-b border-[#F3F4F6] shadow-md/10"
             : "h-[90px] border-b border-[#F3F4F6]/50"
-        }`}
+          }`}
       >
         <div className="max-w-[1400px] h-full mx-auto px-10 flex items-center justify-between relative">
-          
+
           {/* Logo Section */}
           <div className="flex items-center">
-            <a href="/" className="focus:outline-none block">
+            <Link
+              href="/"
+              onClick={handleHomeClick}
+              className="focus:outline-none block"
+            >
               <motion.div
                 animate={{ scale: scrolled ? 0.92 : 1 }}
                 transition={{ duration: 0.3 }}
@@ -74,7 +94,7 @@ export function Navbar({ scrolled = false }: NavbarProps) {
               >
                 <Logo variant="horizontal" iconSize={scrolled ? 34 : 38} />
               </motion.div>
-            </a>
+            </Link>
           </div>
 
           {/* Center Navigation Links (Hidden on Mobile/Tablet) */}
@@ -146,15 +166,41 @@ export function Navbar({ scrolled = false }: NavbarProps) {
                 );
               }
 
+              const isHome = item.label === "Home";
+              const isHomeActive = isHome && pathname === "/";
+
+              if (isHome) {
+                return (
+                  <button
+                    key={item.label}
+                    onClick={handleHomeClick}
+                    className={`relative text-base font-medium transition-colors py-2 group cursor-pointer ${
+                      isHomeActive ? "text-[#028174]" : "text-[#374151] hover:text-[#028174]"
+                    }`}
+                  >
+                    {item.label}
+                    <span className={`absolute bottom-0 left-0 h-0.5 bg-[#028174] transition-all duration-300 ${
+                      isHomeActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`} />
+                  </button>
+                );
+              }
+
+              const isActive = pathname === item.href;
+
               return (
-                <a
+                <Link
                   key={item.label}
                   href={item.href}
-                  className="relative text-base font-medium text-[#374151] hover:text-[#028174] transition-colors py-2 group"
+                  className={`relative text-base font-medium transition-colors py-2 group ${
+                    isActive ? "text-[#028174]" : "text-[#374151] hover:text-[#028174]"
+                  }`}
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#028174] transition-all duration-300 group-hover:w-full" />
-                </a>
+                  <span className={`absolute bottom-0 left-0 h-0.5 bg-[#028174] transition-all duration-300 ${
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                  }`} />
+                </Link>
               );
             })}
           </div>
@@ -201,7 +247,15 @@ export function Navbar({ scrolled = false }: NavbarProps) {
               <div>
                 {/* Mobile Drawer Header */}
                 <div className="flex items-center justify-between border-b border-[#F3F4F6] pb-5">
-                  <Logo variant="horizontal" iconSize={32} />
+                  <Link
+                    href="/"
+                    onClick={(e) => {
+                      setMobileMenuOpen(false);
+                      handleHomeClick(e);
+                    }}
+                  >
+                    <Logo variant="horizontal" iconSize={32} />
+                  </Link>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-2 rounded-xl text-[#374151] hover:bg-[#F4FAF9] hover:text-[#028174] transition-all cursor-pointer"
@@ -228,7 +282,7 @@ export function Navbar({ scrolled = false }: NavbarProps) {
                             <span>{item.label}</span>
                             <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${mobileDiseasesAccordion ? "rotate-180 text-[#028174]" : ""}`} />
                           </button>
-                          
+
                           <AnimatePresence>
                             {mobileDiseasesAccordion && (
                               <motion.div
@@ -239,14 +293,14 @@ export function Navbar({ scrolled = false }: NavbarProps) {
                                 className="overflow-hidden pl-4 pr-2 mt-2 grid grid-cols-2 gap-2 bg-[#F8FFF8]/60 p-3.5 rounded-xl border border-[#E6F3F2]"
                               >
                                 {mobileDiseases.map((disease) => (
-                                  <a
+                                  <Link
                                     key={disease.name}
                                     href={disease.href}
                                     onClick={() => setMobileMenuOpen(false)}
                                     className="text-xs font-semibold text-[#4B5563] hover:text-[#028174] py-1.5 block"
                                   >
                                     • {disease.name}
-                                  </a>
+                                  </Link>
                                 ))}
                               </motion.div>
                             )}
@@ -265,7 +319,7 @@ export function Navbar({ scrolled = false }: NavbarProps) {
                             <span>{item.label}</span>
                             <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${mobileTreatmentsAccordion ? "rotate-180 text-[#028174]" : ""}`} />
                           </button>
-                          
+
                           <AnimatePresence>
                             {mobileTreatmentsAccordion && (
                               <motion.div
@@ -276,14 +330,14 @@ export function Navbar({ scrolled = false }: NavbarProps) {
                                 className="overflow-hidden pl-4 pr-2 mt-2 grid grid-cols-2 gap-2 bg-[#F8FFF8]/60 p-3.5 rounded-xl border border-[#E6F3F2]"
                               >
                                 {mobileTreatments.map((treatment) => (
-                                  <a
+                                  <Link
                                     key={treatment}
-                                    href="#appointment"
+                                    href="/#appointment"
                                     onClick={() => setMobileMenuOpen(false)}
                                     className="text-xs font-semibold text-[#4B5563] hover:text-[#028174] py-1.5 block"
                                   >
                                     • {treatment}
-                                  </a>
+                                  </Link>
                                 ))}
                               </motion.div>
                             )}
@@ -292,16 +346,40 @@ export function Navbar({ scrolled = false }: NavbarProps) {
                       );
                     }
 
-                    return (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="flex items-center justify-between text-lg font-semibold text-[#1F2937] hover:text-[#028174] transition-colors py-2 border-b border-[#F3F4F6] pb-3"
-                      >
-                        {item.label}
-                      </a>
-                    );
+                    const isHome = item.label === "Home";
+                    const isHomeActive = isHome && pathname === "/";
+
+                    if (isHome) {
+                      return (
+                        <button
+                          key={item.label}
+                          onClick={(e) => {
+                            setMobileMenuOpen(false);
+                            handleHomeClick(e);
+                          }}
+                          className={`flex items-center justify-between text-lg font-semibold transition-colors py-2 border-b border-[#F3F4F6] pb-3 text-left w-full cursor-pointer ${
+                            isHomeActive ? "text-[#028174]" : "text-[#1F2937] hover:text-[#028174]"
+                          }`}
+                        >
+                          {item.label}
+                        </button>
+                      );
+                    }
+
+                     const isActive = pathname === item.href;
+
+                     return (
+                       <Link
+                         key={item.label}
+                         href={item.href}
+                         onClick={() => setMobileMenuOpen(false)}
+                         className={`flex items-center justify-between text-lg font-semibold transition-colors py-2 border-b border-[#F3F4F6] pb-3 ${
+                           isActive ? "text-[#028174]" : "text-[#1F2937] hover:text-[#028174]"
+                         }`}
+                       >
+                         {item.label}
+                       </Link>
+                     );
                   })}
                 </nav>
               </div>
