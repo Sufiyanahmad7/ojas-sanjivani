@@ -6,14 +6,14 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { 
   HeartIcon, 
-  AIDoctorIcon, 
+  DigitalDoctorIcon, 
   AppointmentIcon, 
   AyurvedaIcon 
 } from "@/components/ui/Icons";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   "dual-pathway": HeartIcon,
-  "ai-screening": AIDoctorIcon,
+  "digital-screening": DigitalDoctorIcon,
   "certified-doctors": AppointmentIcon,
   "organic-purity": AyurvedaIcon,
 };
@@ -28,7 +28,7 @@ export function WhyChooseUs() {
           <Badge variant="success" className="py-1 px-3">Quality Assurance</Badge>
           
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-text-main leading-tight">
-            Setting the Gold Standard in Holistic Medicine
+            Setting the Gold Standard in Natural Medicine
           </h2>
           
           <p className="text-text-secondary text-sm sm:text-base leading-relaxed">

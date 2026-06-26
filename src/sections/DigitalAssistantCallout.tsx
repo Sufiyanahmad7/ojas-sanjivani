@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Sparkles, ArrowRight, Brain, Send, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export function AIAssistantCallout() {
+export function DigitalAssistantCallout() {
   const [symptomInput, setSymptomInput] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [evaluationStep, setEvaluationStep] = useState<"idle" | "evaluating" | "result">("idle");
@@ -41,7 +41,7 @@ export function AIAssistantCallout() {
   };
 
   return (
-    <section id="ai-assistant" className="py-12 sm:py-14 bg-bg-white relative overflow-hidden">
+    <section id="digital-assistant" className="py-12 sm:py-14 bg-bg-white relative overflow-hidden">
       {/* Decorative gradients */}
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-primary/5 rounded-full filter blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-secondary/5 rounded-full filter blur-3xl pointer-events-none" />
@@ -58,7 +58,7 @@ export function AIAssistantCallout() {
                   <Brain className="w-4.5 h-4.5" />
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-text-main block">Sanjivani AI assistant</span>
+                  <span className="text-xs font-bold text-text-main block">Sanjivani Wellness Guide</span>
                   <span className="text-[10px] text-accent-emerald font-semibold block">● Online & Free</span>
                 </div>
               </div>
@@ -76,7 +76,7 @@ export function AIAssistantCallout() {
                     className="space-y-6"
                   >
                     <p className="text-xs text-text-secondary leading-relaxed bg-mint p-3 rounded-xl border border-primary/5">
-                      "Namaste! Describe your symptoms, digestion, or concerns below. I will analyze them and recommend the best therapeutic approach."
+                      "Namaste! Describe your symptoms, digestion, or concerns below. I will recommend the best therapeutic approach."
                     </p>
 
                     {/* Predefined Quick Tags */}
@@ -179,10 +179,10 @@ export function AIAssistantCallout() {
 
         {/* Right Column: Copy & Details */}
         <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
-          <Badge variant="accent" className="py-1 px-3">Sanjivani Diagnostics AI</Badge>
+          <Badge variant="accent" className="py-1 px-3">Sanjivani Diagnostics Guide</Badge>
           
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-text-main leading-tight">
-            Consult the AI Health Assistant in Seconds
+            Consult the Sanjivani Wellness Guide in Seconds
           </h2>
           
           <p className="text-text-secondary text-sm sm:text-base leading-relaxed">

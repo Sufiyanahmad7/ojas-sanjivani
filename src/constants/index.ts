@@ -2,7 +2,7 @@ import { NavLink, ServiceCard, DiseaseCategory, Doctor, PatientStory, MedicinePr
 
 export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "/" },
-  { label: "AI Health Assistant", href: "/ai-assistant", badge: "New" },
+  { label: "Digital Health Assistant", href: "/digital-assistant", badge: "New" },
   { label: "Online Consultation", href: "/consult" },
   { label: "Ayurveda", href: "/ayurveda" },
   { label: "Homeopathy", href: "/homeopathy" },
@@ -35,12 +35,12 @@ export const TRUST_INDICATORS = [
 
 export const SERVICES: ServiceCard[] = [
   {
-    id: "ai-assistant",
-    title: "AI-Powered Health Consultation",
-    description: "Get instant wellness analysis, symptom evaluation, and personalized holistic recommendations driven by expert clinical models.",
+    id: "digital-assistant",
+    title: "Digital Health Consultation",
+    description: "Get instant wellness analysis, symptom evaluation, and personalized natural recommendations driven by expert clinical models.",
     iconName: "BrainCircuit",
-    href: "/ai-assistant",
-    category: "ai-health",
+    href: "/digital-assistant",
+    category: "digital-health",
   },
   {
     id: "online-consult",
@@ -147,13 +147,13 @@ export const WHY_CHOOSE_US = [
   {
     id: "dual-pathway",
     title: "Synergy of Ayurveda & Homeopathy",
-    description: "We are India's first platform to blend ancient Ayurvedic knowledge with modern Homeopathy, offering a complete holistic recovery strategy.",
+    description: "We are India's first platform to blend ancient Ayurvedic knowledge with modern Homeopathy, offering a complete natural recovery strategy.",
     iconName: "HeartHandshake",
   },
   {
-    id: "ai-screening",
-    title: "AI-Powered Pre-Screening",
-    description: "Our proprietary AI assistant analyzes your symptoms and matches you with the ideal doctor, optimizing diagnostic accuracy and consultation time.",
+    id: "digital-screening",
+    title: "Smart Pre-Screening",
+    description: "Our proprietary digital wellness guide analyzes your symptoms and matches you with the ideal doctor, optimizing diagnostic accuracy and consultation time.",
     iconName: "Cpu",
   },
   {
@@ -175,7 +175,7 @@ export const DOCTORS: Doctor[] = [
     id: "doc-1",
     name: "Dr. Sanjeev Bhaskar",
     specialty: "Senior Ayurvedic Physician",
-    image: "/images/doctor-hero.png",
+    image: "/images/dr_sanjeev_bhaskar.png",
     qualifications: ["BAMS (University of Delhi)", "MD (Ayurveda - Kayachikitsa)"],
     experience: 18,
     rating: 4.9,
@@ -187,7 +187,7 @@ export const DOCTORS: Doctor[] = [
     id: "doc-2",
     name: "Dr. Ananya Roy",
     specialty: "Homeopathic Consultant",
-    image: "/images/doctor-hero.png",
+    image: "/images/dr_ananya_roy.png",
     qualifications: ["BHMS (NIH Kolkata)", "MD (Homeopathy - Repertory)"],
     experience: 14,
     rating: 4.8,
@@ -199,7 +199,7 @@ export const DOCTORS: Doctor[] = [
     id: "doc-3",
     name: "Dr. Madhavan Pillai",
     specialty: "Panchakarma & Spine Specialist",
-    image: "/images/doctor-hero.png",
+    image: "/images/dr_madhavan_pillai.png",
     qualifications: ["BAMS (Kerala Ayurveda Academy)", "MD (Panchakarma)"],
     experience: 22,
     rating: 4.95,
@@ -211,7 +211,7 @@ export const DOCTORS: Doctor[] = [
     id: "doc-4",
     name: "Dr. Priya Deshmukh",
     specialty: "Women's Health & Gynaecology (Ayur)",
-    image: "/images/doctor-hero.png",
+    image: "/images/dr_priya_deshmukh.png",
     qualifications: ["BAMS (Pune)", "MS (Prasuti Tantra & Stri Roga)"],
     experience: 11,
     rating: 4.85,
@@ -314,7 +314,7 @@ export const FAQS: FAQItem[] = [
   {
     id: "faq-1",
     question: "How do I choose between Ayurveda and Homeopathy?",
-    answer: "Ayurveda focuses on balancing the three bio-energies (Vata, Pitta, Kapha) using diet, herbs, and therapies to address root causes. Homeopathy uses micro-dosed natural substances to trigger the body's self-healing mechanisms. If you are unsure, our AI Health Assistant can analyze your symptoms and recommend the most effective treatment pathway.",
+    answer: "Ayurveda focuses on balancing the three bio-energies (Vata, Pitta, Kapha) using diet, herbs, and therapies to address root causes. Homeopathy uses micro-dosed natural substances to trigger the body's self-healing mechanisms. If you are unsure, our Wellness Assistant can analyze your symptoms and recommend the most effective treatment pathway.",
     category: "general",
   },
   {
@@ -331,8 +331,8 @@ export const FAQS: FAQItem[] = [
   },
   {
     id: "faq-4",
-    question: "How does the AI Health Assistant work?",
-    answer: "Our AI assistant uses clinical reasoning models and medical ontologies. You answer a few simple questions regarding your symptoms, lifestyle, and digestion. It then compiles a preliminary symptom assessment, estimates your constitutional Prakriti (Ayurveda), and suggests the right doctor specialty.",
+    question: "How does the Digital Wellness Assistant work?",
+    answer: "Our digital assistant uses clinical reasoning models and medical ontologies. You answer a few simple questions regarding your symptoms, lifestyle, and digestion. It then compiles a preliminary symptom assessment, estimates your constitutional Prakriti (Ayurveda), and suggests the right doctor specialty.",
     category: "general",
   },
   {

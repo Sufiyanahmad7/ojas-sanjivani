@@ -10,8 +10,8 @@ export function Footer() {
     clinical: [
       { label: "Online Consultation", href: "#services" },
       { label: "Find Expert Doctors", href: "#doctors" },
-      { label: "AI Symptom Diagnostic", href: "#ai-assistant" },
-      { label: "Prakriti Screening", href: "#ai-assistant" }
+      { label: "Digital Symptom Checker", href: "#digital-assistant" },
+      { label: "Prakriti Screening", href: "#digital-assistant" }
     ],
     specialties: [
       { label: "Digestion & Gut Health", href: "#diseases" },
@@ -38,7 +38,7 @@ export function Footer() {
           <div className="lg:col-span-4 space-y-6">
             <Logo variant="horizontal" iconSize={36} />
             <p className="text-xs sm:text-sm text-text-secondary leading-relaxed max-w-sm">
-              Ojas Sanjivani is a modern, integrated healthcare platform blending the traditional roots of Ayurveda and Homeopathy with advanced AI diagnostic assistance.
+              Ojas Sanjivani is a modern, integrated healthcare platform blending the traditional roots of Ayurveda and Homeopathy with advanced diagnostic assistance.
             </p>
             <div className="flex flex-wrap gap-2">
               <Badge variant="success" className="text-[9px] uppercase tracking-wider">GMP Certified</Badge>

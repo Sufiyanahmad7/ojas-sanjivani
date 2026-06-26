@@ -139,7 +139,7 @@ export function Logo({
           </span>
         </div>
         <span className="font-sans text-[9px] font-bold tracking-[0.25em] text-text-secondary uppercase mt-0.5">
-          Holistic Healthcare
+          Natural Healthcare
         </span>
       </div>
     </div>

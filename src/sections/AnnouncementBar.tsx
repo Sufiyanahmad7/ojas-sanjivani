@@ -4,7 +4,7 @@ import React from "react";
 
 export function AnnouncementBar() {
   const announcementText =
-    "Consult Certified Ayurveda & Homeopathy Experts from the Comfort of Your Home • AI Health Assistant • Online Consultations • Authentic Medicines • Wellness Programs • Book Your Appointment Today • Call +91 97665 48692";
+    "Consult Certified Ayurveda & Homeopathy Experts from the Comfort of Your Home • Digital Health Assistant • Online Consultations • Authentic Medicines • Wellness Programs • Book Your Appointment Today • Call +91 97665 48692";
 
   return (
     <div

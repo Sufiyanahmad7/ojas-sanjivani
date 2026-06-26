@@ -28,17 +28,17 @@ export const metadata: Metadata = {
     template: "%s | Ojas Sanjivani",
     default: "Ojas Sanjivani - Premium Digital Healthcare & Wellness Platform",
   },
-  description: "Experience the synergy of Ayurveda, Homeopathy, and AI-powered health consultations at Ojas Sanjivani. Connect with qualified doctors, order genuine medicines online, and embrace a healthier lifestyle with customized natural wellness plans.",
+  description: "Experience the synergy of Ayurveda, Homeopathy, and digital health consultations at Ojas Sanjivani. Connect with qualified doctors, order genuine medicines online, and embrace a healthier lifestyle with customized natural wellness plans.",
   keywords: [
     "Ojas Sanjivani",
     "Ayurveda",
     "Homeopathy",
-    "AI Health Assistant",
+    "Digital Health Assistant",
     "Online Doctor Consultation",
     "Online Medicine Delivery",
     "Wellness E-commerce",
     "Natural Wellness",
-    "Holistic Healing",
+    "Natural Healing",
     "Indian Healthcare Platform"
   ],
   authors: [{ name: "Ojas Sanjivani Team" }],
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Ojas Sanjivani - Premium Digital Healthcare & Wellness Platform",
-    description: "Consult qualified doctors, receive AI-powered health assessments, and order authentic Ayurvedic & Homeopathic medicines with seamless home delivery.",
+    description: "Consult qualified doctors, receive digital health assessments, and order authentic Ayurvedic & Homeopathic medicines with seamless home delivery.",
     url: "https://ojassanjivani.com",
     siteName: "Ojas Sanjivani",
     locale: "en_IN",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Ojas Sanjivani - Premium Digital Healthcare & Wellness Platform",
-    description: "Experience the synergy of Ayurveda, Homeopathy, and AI-powered consultations.",
+    description: "Experience the synergy of Ayurveda, Homeopathy, and digital consultations.",
   },
   robots: {
     index: true,

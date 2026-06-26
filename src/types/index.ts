@@ -17,7 +17,7 @@ export interface ServiceCard {
   description: string;
   iconName: string;
   href: string;
-  category: "ayurveda" | "homeopathy" | "ai-health" | "doctor-consult" | "medicine-delivery" | "wellness-ecommerce";
+  category: "ayurveda" | "homeopathy" | "digital-health" | "doctor-consult" | "medicine-delivery" | "wellness-ecommerce";
 }
 
 export interface DiseaseCategory {

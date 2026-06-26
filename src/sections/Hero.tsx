@@ -76,7 +76,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative overflow-hidden w-full z-10 pt-8 pb-6 lg:h-[calc(100vh-130px)] lg:min-h-[580px] lg:max-h-[660px] flex items-center"
+      className="relative overflow-hidden w-full z-10 pt-14 pb-14 lg:pt-20 lg:pb-20 lg:h-[calc(100vh-130px)] lg:min-h-[580px] lg:max-h-[660px] flex items-center"
       style={{
         background: `
           linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.08)),
@@ -90,14 +90,7 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-[40%_30%_30%] gap-10 items-stretch w-full">
 
           {/* COLUMN 1: LEFT CONTENT (40% proportional width) */}
-          <div className="flex flex-col text-left space-y-3">
-            {/* Tag Badge */}
-            <div className="inline-flex self-start items-center gap-1.5 bg-white border border-[#028174]/20 px-3 py-1 rounded-full shadow-sm">
-              <Leaf className="w-3.5 h-3.5 text-[#028174] shrink-0" />
-              <span className="text-[10px] sm:text-xs font-bold text-[#1E293B] tracking-wide">
-                Integrated Ayurveda & Homeopathy Healthcare Platform
-              </span>
-            </div>
+          <div className="flex flex-col text-left justify-center space-y-3">
 
             {/* Headline */}
             <h1 className="font-heading text-3xl sm:text-4xl xl:text-[52px] font-extrabold text-[#1E293B] leading-[1.05] tracking-tight">
@@ -109,7 +102,7 @@ export function Hero() {
 
             {/* Subheadline (Description) */}
             <p className="font-sans text-xs sm:text-[13px] text-[#1E293B]/80 leading-relaxed max-w-[500px]">
-              Root-cause treatment for chronic diseases through evidence-based Ayurveda & Homeopathy. Personalized treatment plans, certified doctors, authentic medicines, and holistic wellness programs.
+              Root-cause treatment for chronic diseases through evidence-based Ayurveda & Homeopathy. Personalized treatment plans, certified doctors, authentic medicines, and natural wellness programs.
             </p>
 
             {/* Action Buttons */}
@@ -129,12 +122,12 @@ export function Hero() {
                 className="rounded-full bg-white/80 border-[#028174]/40 text-[#028174] hover:bg-[#028174] hover:text-white flex items-center justify-center gap-2 px-6 h-11 text-xs font-bold transition-all duration-300 border backdrop-blur-sm"
                 onClick={(e) => {
                   e.preventDefault();
-                  const aiBtn = document.querySelector('[aria-label="Open AI Health Assistant"]') as HTMLButtonElement;
+                  const aiBtn = document.querySelector('[aria-label="Open Wellness Assistant"]') as HTMLButtonElement;
                   if (aiBtn) aiBtn.click();
                 }}
               >
                 <Bot className="w-3.5 h-3.5 shrink-0" />
-                Chat with AI Doctor
+                Chat with Wellness Guide
               </Button>
             </div>
 
@@ -157,21 +150,8 @@ export function Hero() {
 
           </div>
 
-          {/* COLUMN 2: CENTER DOCTOR IMAGE (30% width) - Dominates Hero & Takes Complete Height */}
-          <div className="relative h-[480px] lg:h-full min-h-[480px] lg:min-h-0 w-full rounded-2xl overflow-hidden border border-white/25 shadow-xl bg-white flex items-end justify-center z-10">
-            {/* Main Doctor Image filling the container */}
-            <Image
-              src="/images/doctor-hero.png"
-              alt="Ayurvedic Doctor Specialist"
-              fill
-              priority
-              className="object-cover object-right-bottom"
-              sizes="(max-width: 768px) 100vw, 400px"
-            />
-          </div>
-
-          {/* COLUMN 3: RIGHT CONSULTATION CARD (30% width) - Aligned to doctor's shoulders */}
-          <div className="flex items-start justify-center lg:justify-end w-full lg:mt-[70px] xl:mt-[90px]">
+          {/* COLUMN 2: CENTER CONSULTATION CARD (30% width) - Centered vertically and horizontally */}
+          <div className="flex items-center justify-center w-full z-10">
             <div className="w-full max-w-[360px] h-[420px] bg-white rounded-2xl border border-[#E5E7EB] p-6 shadow-2xl relative flex flex-col justify-between">
 
               <div>
@@ -254,6 +234,19 @@ export function Hero() {
               </div>
 
             </div>
+          </div>
+
+          {/* COLUMN 3: RIGHT DOCTOR IMAGE (30% width) - Dominates Hero & Takes Complete Height */}
+          <div className="relative h-[500px] lg:h-[520px] xl:h-[560px] w-full rounded-2xl overflow-hidden border border-white/25 shadow-xl bg-white flex items-end justify-center z-10 self-center">
+            {/* Main Doctor Image filling the container */}
+            <Image
+              src="/images/doctor-hero.png"
+              alt="Ayurvedic Doctor Specialist"
+              fill
+              priority
+              className="object-cover object-bottom transition-transform duration-500"
+              sizes="(max-width: 768px) 100vw, 400px"
+            />
           </div>
 
         </div>

@@ -10,7 +10,7 @@ export function FloatingWidgets() {
     {
       id: 1,
       sender: "bot",
-      text: "Namaste! I am your Ojas AI Health Assistant. How can I help you on your wellness journey today?",
+      text: "Namaste! I am your Ojas Wellness Assistant. How can I help you on your wellness journey today?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -63,7 +63,7 @@ export function FloatingWidgets() {
   return (
     <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 md:bottom-6 md:right-6 z-[9999] flex flex-col items-end gap-4 pointer-events-none">
       
-      {/* AI Assistant Chat Modal */}
+      {/* Digital Assistant Chat Modal */}
       <AnimatePresence>
         {isAiOpen && (
           <motion.div
@@ -79,7 +79,7 @@ export function FloatingWidgets() {
                   <Bot className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-heading text-sm font-bold leading-tight">Ojas AI Assistant</h4>
+                  <h4 className="font-heading text-sm font-bold leading-tight">Ojas Wellness Guide</h4>
                   <span className="text-[10px] text-white/75 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     Online | Ayurvedic Expert
@@ -165,7 +165,7 @@ export function FloatingWidgets() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask Ojas AI about health..."
+                placeholder="Ask Ojas Wellness about health..."
                 className="flex-1 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl px-3 text-xs focus:outline-none focus:border-[#028174] focus:ring-2 focus:ring-[#028174]/10"
               />
               <button
@@ -181,12 +181,12 @@ export function FloatingWidgets() {
 
       {/* Widgets Action Container (Pointer events auto to allow interaction) */}
       <div className="flex flex-col gap-4 pointer-events-auto">
-        {/* 1. AI Health Assistant Floating Circular Button */}
+        {/* 1. Digital Health Assistant Floating Circular Button */}
         <div className="relative group flex justify-end">
           <motion.button
             onClick={() => setIsAiOpen(!isAiOpen)}
             className="w-14 h-14 rounded-full bg-[#028174] text-white shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 relative cursor-pointer"
-            aria-label="Open AI Health Assistant"
+            aria-label="Open Wellness Assistant"
             animate={{
               boxShadow: [
                 "0 4px 20px rgba(2, 129, 116, 0.2)",
@@ -205,7 +205,7 @@ export function FloatingWidgets() {
 
           {/* Hover Tooltip */}
           <span className="absolute right-full mr-3.5 top-1/2 -translate-y-1/2 bg-white text-[#1F2937] text-[10px] font-bold py-1.5 px-3 rounded-lg shadow-lg border border-[#F3F4F6] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 whitespace-nowrap">
-            AI Health Assistant • Start a conversation
+            Wellness Assistant • Start a conversation
           </span>
         </div>
 

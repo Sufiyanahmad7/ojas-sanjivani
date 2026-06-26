@@ -13,8 +13,8 @@ export interface IllustrationProps extends React.SVGProps<SVGSVGElement> {
  * Designed with a premium flat, rounded, minimal SVG style in a white and green palette.
  */
 
-// 1. AI Health Assistant
-export function AIHealthAssistant({
+// 1. Digital Health Assistant
+export function DigitalHealthAssistant({
   size = 200,
   primaryColor = "#2E7D32",
   secondaryColor = "#43A047",
@@ -29,7 +29,7 @@ export function AIHealthAssistant({
       <circle cx="150" cy="60" r="16" fill={lightGreen} />
       <circle cx="60" cy="140" r="22" fill={lightGreen} opacity="0.6" />
       
-      {/* AI Brain / Core Screen */}
+      {/* Digital Brain / Core Screen */}
       <rect x="65" y="60" width="70" height="80" rx="16" fill="#FFFFFF" stroke={lightGreen} strokeWidth="3" />
       <rect x="75" y="70" width="50" height="45" rx="10" fill={lightGreen} />
       

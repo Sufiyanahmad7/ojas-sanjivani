@@ -4,7 +4,7 @@ import { Hero } from "@/sections/Hero";
 import { TrustIndicators } from "@/sections/TrustIndicators";
 import { ServicesOverview } from "@/sections/ServicesOverview";
 import { Diseases } from "@/sections/Diseases";
-import { AIAssistantCallout } from "@/sections/AIAssistantCallout";
+import { DigitalAssistantCallout } from "@/sections/DigitalAssistantCallout";
 import { WhyChooseUs } from "@/sections/WhyChooseUs";
 import { DoctorsList } from "@/sections/DoctorsList";
 import { PatientStories } from "@/sections/PatientStories";
@@ -36,8 +36,8 @@ export default function Home() {
         {/* 6. Disease Categories */}
         <Diseases />
 
-        {/* 7. AI Health Assistant Section */}
-        <AIAssistantCallout />
+        {/* 7. Digital Health Assistant Section */}
+        <DigitalAssistantCallout />
 
         {/* 8. Why Choose Ojas Sanjivani */}
         <WhyChooseUs />
@@ -61,7 +61,7 @@ export default function Home() {
       {/* 14. Footer */}
       <Footer />
 
-      {/* 15. Floating Action Widgets (AI assistant + official WhatsApp) */}
+      {/* 15. Floating Action Widgets (Digital assistant + official WhatsApp) */}
       <FloatingWidgets />
     </div>
   );

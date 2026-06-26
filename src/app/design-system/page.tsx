@@ -63,7 +63,7 @@ export default function DesignSystemPage() {
   </g>
   <text x="82" y="40" font-family="Poppins, sans-serif" font-size="24" font-weight="800" fill="#2E7D32" letter-spacing="0.05em">OJAS</text>
   <text x="146" y="40" font-family="Poppins, sans-serif" font-size="24" font-weight="300" fill="#43A047" letter-spacing="0.05em">SANJIVANI</text>
-  <text x="83" y="56" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#6B7280" letter-spacing="0.25em">HOLISTIC HEALTHCARE</text>
+  <text x="83" y="56" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#6B7280" letter-spacing="0.25em">NATURAL HEALTHCARE</text>
 </svg>`,
     vertical: `<svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g transform="translate(60, 10) scale(0.8)">
@@ -79,7 +79,7 @@ export default function DesignSystemPage() {
   </g>
   <text x="100" y="110" font-family="Poppins, sans-serif" font-size="18" font-weight="800" fill="#2E7D32" text-anchor="middle" letter-spacing="0.08em">OJAS</text>
   <text x="100" y="130" font-family="Poppins, sans-serif" font-size="16" font-weight="300" fill="#43A047" text-anchor="middle" letter-spacing="0.08em">SANJIVANI</text>
-  <text x="100" y="145" font-family="Inter, sans-serif" font-size="7" font-weight="700" fill="#6B7280" text-anchor="middle" letter-spacing="0.2em">HOLISTIC HEALTHCARE</text>
+  <text x="100" y="145" font-family="Inter, sans-serif" font-size="7" font-weight="700" fill="#6B7280" text-anchor="middle" letter-spacing="0.2em">NATURAL HEALTHCARE</text>
 </svg>`,
     favicon: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
   <circle cx="50" cy="50" r="44" stroke="#2E7D32" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="210 40" />
@@ -106,13 +106,13 @@ export default function DesignSystemPage() {
     { name: "Ayurvedic Amber", hex: "#D97706", usage: "Herb details & Ayurvedic badges" },
     { name: "Clinical Emerald", hex: "#059669", usage: "Homeopathic drops & doctor statuses" },
     { name: "Pharmacy Rose", hex: "#E11D48", usage: "Delivery indicators & emergency notices" },
-    { name: "AI sky blue", hex: "#0EA5E9", usage: "AI diagnostic assistant triggers" }
+    { name: "Digital sky blue", hex: "#0EA5E9", usage: "Digital diagnostic assistant triggers" }
   ];
 
   const brandIcons = [
     { Component: Icons.AyurvedaIcon, name: "Ayurveda" },
     { Component: Icons.HomeopathyIcon, name: "Homeopathy" },
-    { Component: Icons.AIDoctorIcon, name: "AI Doctor" },
+    { Component: Icons.DigitalDoctorIcon, name: "Digital Doctor" },
     { Component: Icons.OnlineConsultationIcon, name: "Online Consultation" },
     { Component: Icons.MedicineDeliveryIcon, name: "Medicine Delivery" },
     { Component: Icons.HeartIcon, name: "Heart" },
@@ -133,7 +133,7 @@ export default function DesignSystemPage() {
   ];
 
   const brandIllustrations = [
-    { Component: Illustrations.AIHealthAssistant, name: "AI Health Assistant" },
+    { Component: Illustrations.DigitalHealthAssistant, name: "Digital Health Assistant" },
     { Component: Illustrations.OnlineDoctorConsultation, name: "Online Doctor Consultation" },
     { Component: Illustrations.Ayurveda, name: "Ayurveda" },
     { Component: Illustrations.Homeopathy, name: "Homeopathy" },
@@ -439,7 +439,7 @@ export default function DesignSystemPage() {
               <div className="pt-4 border-t border-border-main/10">
                 <span className="text-[10px] font-bold tracking-widest text-text-secondary uppercase">Body Text — Inter</span>
                 <p className="font-sans text-sm text-text-main leading-relaxed mt-1">
-                  Experience the synergy of Ayurveda, Homeopathy, and AI-powered consultations at Ojas Sanjivani. Connect with qualified doctors and order authentic medicines online.
+                  Experience the synergy of Ayurveda, Homeopathy, and digital consultations at Ojas Sanjivani. Connect with qualified doctors and order authentic medicines online.
                 </p>
                 <p className="text-xs text-text-secondary mt-1">Inter Regular/Medium for easily readable medical literature and descriptions.</p>
               </div>
