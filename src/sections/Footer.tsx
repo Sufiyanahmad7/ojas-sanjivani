@@ -20,10 +20,10 @@ export function Footer() {
       { label: "Diabetes Management", href: "#diseases" }
     ],
     company: [
-      { label: "About Ojas Sanjivani", href: "#" },
+      { label: "About Ojas Sanjivani", href: "/about" },
       { label: "Organic Herb Sourcing", href: "#" },
-      { label: "FAQs & Helpdesk", href: "#faqs" },
-      { label: "Contact Support", href: "#appointment" }
+      { label: "FAQs & Helpdesk", href: "/contact#faqs" },
+      { label: "Contact Support", href: "/contact" }
     ]
   };
 

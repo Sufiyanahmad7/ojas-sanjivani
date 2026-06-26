@@ -40,11 +40,11 @@ export function Navbar({ scrolled = false }: NavbarProps) {
   const navItems = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
-    { label: "Diseases", href: "/#diseases", dropdown: "diseases" },
     { label: "Treatments", href: "/#services", dropdown: "treatments" },
+    { label: "Diseases", href: "/#diseases", dropdown: "diseases" },
     { label: "Medicine", href: "/#pharmacy" },
     { label: "Blog", href: "/#stories" },
-    { label: "Contact", href: "/#appointment" },
+    { label: "Contact", href: "/contact" },
   ];
 
   const mobileDiseases = [
