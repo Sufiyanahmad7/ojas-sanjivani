@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -27,10 +28,10 @@ export function DiseasesDropdown({ onItemClick }: DiseasesDropdownProps) {
     Neurology: [
       "Migraine",
       "Vertigo",
-      "Parkinson's",
+      "Parkinson's Disease",
       "Neuropathy",
       "Epilepsy",
-      "Insomnia Support",
+      "Insomnia",
     ],
     "Sexual Problems": [
       "Erectile Dysfunction",
@@ -48,14 +49,14 @@ export function DiseasesDropdown({ onItemClick }: DiseasesDropdownProps) {
     ],
     "Liver & Gall": [
       "Fatty Liver",
-      "Jaundice Support",
-      "Gallstones Care",
+      "Jaundice",
+      "Gallstones",
       "Liver Detoxification",
       "Hepatitis Support",
     ],
     "Psychological Issues": [
       "Anxiety Disorders",
-      "Depression Care",
+      "Depression",
       "Chronic Stress",
       "Panic Attacks",
       "Mood Swings",
@@ -163,6 +164,142 @@ export function DiseasesDropdown({ onItemClick }: DiseasesDropdownProps) {
   const maxTop = 510 - submenuHeight - 6;
   const targetTop = Math.max(6, Math.min(activeOffsetTop, maxTop));
 
+  // Resolve dynamic links for active categories
+  const getLinkDetails = (category: string, item: string) => {
+    const slugMap: Record<string, Record<string, string>> = {
+      "Heart Disease": {
+        "Hypertension": "/diseases/hypertension",
+        "High Cholesterol": "/diseases/high-cholesterol",
+        "Angina": "/diseases/angina",
+        "Ischemic Heart Disease": "/diseases/ischemic-heart-disease",
+        "Heart Palpitations": "/diseases/heart-palpitations",
+        "Cardiac Wellness": "/diseases/cardiac-wellness"
+      },
+      "Neurology": {
+        "Migraine": "/diseases/migraine",
+        "Vertigo": "/diseases/vertigo",
+        "Parkinson's Disease": "/diseases/parkinsons-disease",
+        "Neuropathy": "/diseases/neuropathy",
+        "Epilepsy": "/diseases/epilepsy",
+        "Insomnia": "/diseases/insomnia"
+      },
+      "Sexual Problems": {
+        "Erectile Dysfunction": "/diseases/erectile-dysfunction",
+        "Premature Ejaculation": "/diseases/premature-ejaculation",
+        "Low Libido": "/diseases/low-libido",
+        "Performance Anxiety": "/diseases/performance-anxiety",
+        "Infertility Support": "/diseases/infertility-support"
+      },
+      "Autoimmune Disorders": {
+        "Rheumatoid Arthritis": "/diseases/rheumatoid-arthritis",
+        "Psoriasis": "/diseases/psoriasis",
+        "Lupus (SLE)": "/diseases/lupus",
+        "Celiac Disease": "/diseases/celiac-disease",
+        "Multiple Sclerosis": "/diseases/multiple-sclerosis"
+      },
+      "Liver & Gall": {
+        "Fatty Liver": "/diseases/fatty-liver",
+        "Jaundice": "/diseases/jaundice",
+        "Gallstones": "/diseases/gallstones",
+        "Liver Detoxification": "/diseases/liver-detoxification",
+        "Hepatitis Support": "/diseases/hepatitis-support"
+      },
+      "Psychological Issues": {
+        "Anxiety Disorders": "/diseases/anxiety-disorders",
+        "Depression": "/diseases/depression",
+        "Chronic Stress": "/diseases/chronic-stress",
+        "Panic Attacks": "/diseases/panic-attacks",
+        "Mood Swings": "/diseases/mood-swings"
+      },
+      "Urinary Disorders": {
+        "Kidney Stones": "/diseases/kidney-stones",
+        "UTI (Tract Infection)": "/diseases/uti",
+        "Prostate Enlargement": "/diseases/prostate-enlargement",
+        "Dysuria": "/diseases/dysuria",
+        "Incontinence Support": "/diseases/incontinence"
+      },
+      "Oncology Support": {
+        "Cancer Recovery Care": "/diseases/cancer-recovery",
+        "Immunity Rebuilding": "/diseases/immunity-rebuilding",
+        "Strength Restoration": "/diseases/strength-restoration",
+        "Nausea Relief": "/diseases/nausea-relief"
+      },
+      "ENT": {
+        "Sinusitis": "/diseases/sinusitis",
+        "Tonsillitis": "/diseases/tonsillitis",
+        "Tinnitus": "/diseases/tinnitus",
+        "Allergic Rhinitis": "/diseases/allergic-rhinitis",
+        "Ear Infections": "/diseases/ear-infections"
+      },
+      "Child Health": {
+        "Child Immunity": "/diseases/child-immunity",
+        "Loss of Appetite": "/diseases/loss-of-appetite",
+        "Hyperactivity": "/diseases/hyperactivity",
+        "Bedwetting Care": "/diseases/bedwetting",
+        "Pediatric Cough & Cold": "/diseases/pediatric-cough-cold"
+      },
+      "Gynecology": {
+        "PCOS / PCOD": "/diseases/pcos",
+        "Menstrual Irregularities": "/diseases/menstrual-irregularities",
+        "Dysmenorrhea": "/diseases/dysmenorrhea",
+        "Leukorrhea": "/diseases/leukorrhea",
+        "Menopause Symptoms": "/diseases/menopause"
+      },
+      "Respiratory Problems": {
+        "Asthma": "/diseases/asthma",
+        "Bronchitis": "/diseases/bronchitis",
+        "Allergic Cough": "/diseases/allergic-cough",
+        "Dyspnea": "/diseases/dyspnea",
+        "Chronic Sinusitis": "/diseases/chronic-sinusitis"
+      },
+      "Joint & Muscle Pain": {
+        "Arthritis": "/diseases/arthritis",
+        "Osteoarthritis": "/diseases/osteoarthritis",
+        "Back Pain": "/diseases/back-pain",
+        "Cervical Pain": "/diseases/cervical-pain",
+        "Sciatica": "/diseases/sciatica",
+        "Frozen Shoulder": "/diseases/frozen-shoulder",
+        "Gout": "/diseases/gout"
+      },
+      "Hairfall & Skin": {
+        "Alopecia / Hair Fall": "/diseases/hair-loss",
+        "Acne & Pimples": "/diseases/acne",
+        "Eczema": "/diseases/eczema",
+        "Psoriasis": "/diseases/psoriasis-skin",
+        "Dandruff Relief": "/diseases/dandruff",
+        "Anti-Aging Care": "/diseases/anti-aging"
+      },
+      "Endocrine Disorders": {
+        "Hypothyroidism": "/diseases/hypothyroidism",
+        "Hyperthyroidism": "/diseases/hyperthyroidism",
+        "Diabetes Mellitus": "/diseases/diabetes",
+        "Adrenal Fatigue": "/diseases/adrenal-fatigue",
+        "Hormonal Imbalance": "/diseases/hormonal-imbalance"
+      },
+      "Digestive Disorders": {
+        "Acidity & Gastritis": "/diseases/acidity-gastritis",
+        "IBS (Irritable Bowel)": "/diseases/ibs",
+        "Constipation": "/diseases/constipation",
+        "Peptic Ulcer": "/diseases/peptic-ulcer",
+        "Fatty Liver": "/diseases/fatty-liver",
+        "Piles & Fissures": "/diseases/piles-fissures"
+      },
+      "Common Diseases": {
+        "Seasonal Flu": "/diseases/seasonal-flu",
+        "Allergies": "/diseases/allergies",
+        "Migraine Pain": "/diseases/migraine",
+        "Cough & Cold": "/diseases/cough-cold",
+        "Fever Support": "/diseases/fever"
+      }
+    };
+
+    const categorySlugs = slugMap[category];
+    if (categorySlugs && categorySlugs[item]) {
+      return { href: categorySlugs[item], isExternal: false };
+    }
+    return { href: "#appointment", isExternal: true };
+  };
+
   return (
     <div
       ref={containerRef}
@@ -222,29 +359,42 @@ export function DiseasesDropdown({ onItemClick }: DiseasesDropdownProps) {
           {/* Submenu items list */}
           <div className="space-y-2.5 pt-0.5">
             <ul className="space-y-2 p-0 m-0">
-              {categoriesData[activeCategory]?.map((item) => (
-                <li key={item} className="list-none">
-                  <a
-                    href="#appointment"
-                    onClick={onItemClick}
-                    className="block text-sm leading-[1.25] text-[#4B5563] hover:text-[#028174] hover:bg-[#F0FDF4] px-2.5 py-1.5 rounded-lg transition-all duration-150"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              {categoriesData[activeCategory]?.map((item) => {
+                const { href, isExternal } = getLinkDetails(activeCategory, item);
+                return (
+                  <li key={item} className="list-none">
+                    {isExternal ? (
+                      <a
+                        href={href}
+                        onClick={onItemClick}
+                        className="block text-sm leading-[1.25] text-[#4B5563] hover:text-[#028174] hover:bg-[#F0FDF4] px-2.5 py-1.5 rounded-lg transition-all duration-150"
+                      >
+                        {item}
+                      </a>
+                    ) : (
+                      <Link
+                        href={href}
+                        onClick={onItemClick}
+                        className="block text-sm leading-[1.25] text-[#4B5563] hover:text-[#028174] hover:bg-[#F0FDF4] px-2.5 py-1.5 rounded-lg transition-all duration-150"
+                      >
+                        {item}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
           {/* View All CTA Link at the bottom */}
           <div className="pt-3 border-t border-[#F3F4F6] mt-3">
-            <a
-              href="#appointment"
+            <Link
+              href={`/diseases/${activeCategory.toLowerCase().replace(/ & /g, "-").replace(/\s+/g, "-")}`}
               onClick={onItemClick}
               className="inline-flex items-center gap-1.5 text-xs font-bold text-[#028174] hover:text-[#01695F] transition-colors"
             >
               View All Conditions <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

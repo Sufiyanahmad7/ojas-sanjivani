@@ -17,7 +17,7 @@ export function MedicineDelivery() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-4 max-w-xl text-center md:text-left">
-            <Badge variant="primary" className="py-1 px-3">Sanjivani Pharmacy</Badge>
+            <Badge variant="primary" className="py-1 px-3 bg-[#028174]/10 text-[#028174] border-transparent">Sanjivani Pharmacy</Badge>
             <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-text-main">
               Premium Lab-Tested Herbal Formulations
             </h2>
@@ -25,7 +25,7 @@ export function MedicineDelivery() {
               100% authentic, GMP-certified medicines delivered directly to your doorstep with clinical prescription support.
             </p>
           </div>
-          <Button variant="outline" className="self-center md:self-end group bg-bg-white/80" href="#appointment">
+          <Button variant="outline" className="self-center md:self-end group bg-bg-white/80 hover:bg-[#028174]/5 hover:text-[#028174] hover:border-[#028174]/30" href="#appointment">
             Browse Online Store
             <ShoppingCart className="w-4 h-4 ml-1.5 transition-transform group-hover:scale-110" />
           </Button>
@@ -54,19 +54,19 @@ export function MedicineDelivery() {
                   <div className="w-20 h-24 bg-bg-white rounded-xl shadow-soft-sm border border-border-main/40 flex flex-col justify-between p-3.5 relative">
                     <div className="flex justify-between items-start">
                       <span className="w-2.5 h-2.5 rounded-full bg-accent-emerald animate-pulse" />
-                      <Sparkles className="w-3.5 h-3.5 text-primary" />
+                      <Sparkles className="w-3.5 h-3.5 text-[#028174]" />
                     </div>
-                    <div className="text-center font-heading text-[8px] font-black text-primary uppercase tracking-widest leading-none">
+                    <div className="text-center font-heading text-[8px] font-black text-[#028174] uppercase tracking-widest leading-none">
                       OJAS <br /> CARE
                     </div>
-                    <div className="h-1 w-full bg-primary/20 rounded-full" />
+                    <div className="h-1 w-full bg-[#028174]/20 rounded-full" />
                   </div>
                 )}
 
                 {/* Tag Overlay */}
                 {medicine.tag && (
                   <div className="absolute top-3 left-3 z-10">
-                    <Badge variant="success" className="text-[8px] font-bold py-0.5 px-2 bg-bg-white/95 backdrop-blur-sm border border-primary/10">
+                    <Badge variant="success" className="text-[8px] font-bold py-0.5 px-2 bg-bg-white/95 backdrop-blur-sm border border-[#028174]/10 text-[#028174]">
                       {medicine.tag}
                     </Badge>
                   </div>
@@ -103,7 +103,14 @@ export function MedicineDelivery() {
                     </span>
                   </div>
                   
-                  <Button size="sm" variant="primary" className="p-2 h-9 w-9 rounded-xl justify-center shrink-0">
+                  <Button 
+                    size="sm" 
+                    variant="primary" 
+                    className="p-2 h-9 w-9 rounded-xl justify-center shrink-0 text-white border-0 hover:opacity-90"
+                    style={{
+                      background: "linear-gradient(90deg, #01695F 0%, #028174 50%, #01695F 100%)",
+                    }}
+                  >
                     <ShoppingCart className="w-4 h-4" />
                   </Button>
                 </div>

@@ -25,7 +25,7 @@ export function WhyChooseUs() {
         
         {/* Left Column: Title & Key Narrative */}
         <div className="lg:col-span-5 space-y-6 text-center lg:text-left">
-          <Badge variant="success" className="py-1 px-3">Quality Assurance</Badge>
+          <Badge variant="success" className="py-1 px-3 bg-[#028174]/10 text-[#028174] border-transparent">Quality Assurance</Badge>
           
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-text-main leading-tight">
             Setting the Gold Standard in Natural Medicine
@@ -38,12 +38,12 @@ export function WhyChooseUs() {
           {/* Quick trust metrics */}
           <div className="pt-6 border-t border-border-main/30 flex flex-wrap justify-center lg:justify-start gap-8">
             <div>
-              <span className="font-heading text-2xl font-black text-primary block">100%</span>
+              <span className="font-heading text-2xl font-black bg-gradient-to-r from-[#01695F] via-[#028174] to-[#01695F] bg-clip-text text-transparent block">100%</span>
               <span className="text-[10px] font-bold text-text-secondary uppercase tracking-wider block mt-0.5">Lab-Tested Purity</span>
             </div>
             <div className="w-px h-10 bg-border-main hidden sm:block" />
             <div>
-              <span className="font-heading text-2xl font-black text-primary block">15 Min</span>
+              <span className="font-heading text-2xl font-black bg-gradient-to-r from-[#01695F] via-[#028174] to-[#01695F] bg-clip-text text-transparent block">15 Min</span>
               <span className="text-[10px] font-bold text-text-secondary uppercase tracking-wider block mt-0.5">Average Connection Time</span>
             </div>
           </div>

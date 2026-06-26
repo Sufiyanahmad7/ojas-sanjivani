@@ -16,7 +16,7 @@ export function DoctorsList() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <Badge variant="primary" className="py-1 px-3">Expert Practitioners</Badge>
+          <Badge variant="primary" className="py-1 px-3 bg-[#028174]/10 text-[#028174] border-transparent">Expert Practitioners</Badge>
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-text-main">
             Consult India's Top Ayurvedic & Homeopathic Clinicians
           </h2>
@@ -35,7 +35,7 @@ export function DoctorsList() {
               className="flex flex-col h-full bg-bg-white border border-border-main/50 overflow-hidden"
             >
               {/* Doctor Image Header */}
-              <div className="relative w-full aspect-[4/3] bg-gradient-to-b from-mint to-light-green/20 border-b border-border-main/10 flex items-center justify-center overflow-hidden">
+              <div className="relative w-full aspect-[4/3] bg-gradient-to-b from-[#028174]/5 to-[#01695F]/15 border-b border-border-main/10 flex items-center justify-center overflow-hidden">
                 {/* Fallback avatar if no custom image, otherwise render Image */}
                 {doctor.image && doctor.image.startsWith("/images/") ? (
                   <Image
@@ -46,14 +46,14 @@ export function DoctorsList() {
                     sizes="(max-width: 768px) 100vw, 300px"
                   />
                 ) : (
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <div className="w-16 h-16 rounded-full bg-[#028174]/10 flex items-center justify-center text-[#028174]">
                     <Award className="w-8 h-8" />
                   </div>
                 )}
                 
                 {/* Availability Badge */}
                 <div className="absolute bottom-3 left-3">
-                  <Badge variant="success" className="text-[9px] font-bold py-0.5 px-2 bg-bg-white/90 backdrop-blur-sm border border-primary/10 text-primary">
+                  <Badge variant="success" className="text-[9px] font-bold py-0.5 px-2 bg-bg-white/90 backdrop-blur-sm border border-[#028174]/20 text-[#028174]">
                     {doctor.availability}
                   </Badge>
                 </div>
@@ -71,10 +71,10 @@ export function DoctorsList() {
 
                   <h3 className="font-heading text-base font-bold text-text-main flex items-center gap-1.5">
                     {doctor.name}
-                    <ShieldCheck className="w-4.5 h-4.5 text-primary shrink-0" />
+                    <ShieldCheck className="w-4.5 h-4.5 text-[#028174] shrink-0" />
                   </h3>
                   
-                  <span className="text-xs font-semibold text-primary block">
+                  <span className="text-xs font-semibold text-[#028174] block">
                     {doctor.specialty}
                   </span>
 
@@ -95,7 +95,15 @@ export function DoctorsList() {
                       {formatINR(doctor.fee)}
                     </span>
                   </div>
-                  <Button size="sm" variant="primary" href="#appointment" className="gap-1 text-xs">
+                  <Button 
+                    size="sm" 
+                    variant="primary" 
+                    href="#appointment" 
+                    className="gap-1 text-xs text-white border-0 shadow-soft-sm hover:opacity-90"
+                    style={{
+                      background: "linear-gradient(90deg, #01695F 0%, #028174 50%, #01695F 100%)",
+                    }}
+                  >
                     <Calendar className="w-3.5 h-3.5" /> Book Now
                   </Button>
                 </div>

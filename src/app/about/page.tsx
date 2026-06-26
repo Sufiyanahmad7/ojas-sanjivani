@@ -9,7 +9,7 @@ import { FloatingWidgets } from "@/sections/FloatingWidgets";
 import { ScrollToTopOnLoad } from "@/components/common/ScrollToTopOnLoad";
 import { Button } from "@/components/ui/Button";
 
-import { AppointmentForm } from "@/sections/AppointmentForm";
+import { AppointmentBooking } from "@/components/home/AppointmentBooking";
 
 // Import local components for About Us
 import { AboutHero } from "@/components/about/AboutHero";
@@ -70,7 +70,7 @@ export default function AboutPage() {
         <MeetExperts />
 
         {/* Section 5: Appointment Booking Form */}
-        <AppointmentForm />
+        <AppointmentBooking />
 
       </main>
 

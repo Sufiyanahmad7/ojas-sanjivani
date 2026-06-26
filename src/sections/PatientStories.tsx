@@ -30,7 +30,7 @@ export function PatientStories() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <Badge variant="success" className="py-1 px-3">Patient Testimonials</Badge>
+          <Badge variant="success" className="py-1 px-3 bg-[#028174]/10 text-[#028174] border-transparent">Patient Testimonials</Badge>
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-text-main">
             Real Stories of Healing & Recovery
           </h2>
@@ -47,9 +47,12 @@ export function PatientStories() {
               onClick={() => setSelectedCondition(category)}
               className={`text-xs px-4 py-2 rounded-full border transition-all cursor-pointer font-bold ${
                 selectedCondition === category
-                  ? "bg-primary text-bg-white border-primary shadow-soft-sm"
-                  : "bg-bg-white text-text-secondary border-border-main hover:border-primary/40 hover:text-primary"
+                  ? "text-bg-white border-transparent shadow-soft-sm hover:opacity-90"
+                  : "bg-bg-white text-text-secondary border-border-main hover:border-[#028174]/40 hover:text-[#028174]"
               }`}
+              style={selectedCondition === category ? {
+                background: "linear-gradient(90deg, #01695F 0%, #028174 100%)",
+              } : undefined}
             >
               {category}
             </button>
@@ -73,12 +76,12 @@ export function PatientStories() {
                   hoverEffect="lift"
                   className="flex flex-col justify-between h-full bg-bg-white border border-border-main/50 p-6 relative overflow-hidden"
                 >
-                  <Quote className="absolute top-4 right-4 w-12 h-12 text-primary/5 pointer-events-none" />
+                  <Quote className="absolute top-4 right-4 w-12 h-12 text-[#028174]/5 pointer-events-none" />
 
                   <div className="space-y-4 text-left">
                     {/* Header: Badges */}
                     <div className="flex flex-wrap items-center gap-2">
-                      <Badge variant="success" className="text-[9px] uppercase tracking-wider font-bold">
+                      <Badge variant="success" className="text-[9px] uppercase tracking-wider font-bold bg-[#028174]/10 text-[#028174] border-transparent">
                         {story.treatmentReceived}
                       </Badge>
                       <Badge variant="outline" className="text-[9px] font-bold">
@@ -97,13 +100,13 @@ export function PatientStories() {
                     <div className="text-left">
                       <h4 className="text-xs font-extrabold text-text-main flex items-center gap-1">
                         {story.patientName}
-                        <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#028174] shrink-0" />
                       </h4>
                       <span className="text-[10px] text-text-secondary">Verified Recovered Case</span>
                     </div>
                     
-                    <span className="text-[9px] font-bold text-primary/80 bg-primary/5 px-2 py-0.5 rounded flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-secondary animate-pulse" /> {story.location}
+                    <span className="text-[9px] font-bold text-[#028174]/80 bg-[#028174]/5 px-2 py-0.5 rounded flex items-center gap-1">
+                      <Sparkles className="w-3 h-3 text-[#028174] animate-pulse" /> {story.location}
                     </span>
                   </div>
                 </Card>
