@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowRight, MessageSquare } from "lucide-react";
 
 interface TreatmentsDropdownProps {
@@ -17,6 +18,7 @@ interface TreatmentItem {
 }
 
 export function TreatmentsDropdown({ onItemClick }: TreatmentsDropdownProps) {
+  const pathname = usePathname();
   const [activeTab, setActiveTab] = useState<"ayurveda" | "homeopathy">("ayurveda");
 
   const ayurvedaTreatments: TreatmentItem[] = [
@@ -141,6 +143,18 @@ export function TreatmentsDropdown({ onItemClick }: TreatmentsDropdownProps) {
 
   const currentTreatments = activeTab === "ayurveda" ? ayurvedaTreatments : homeopathyTreatments;
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (onItemClick) onItemClick();
+
+    if (href.includes("#booking-form") && pathname === "/contact") {
+      e.preventDefault();
+      const element = document.getElementById("booking-form");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <div className="absolute top-full left-1/2 -translate-x-[42%] lg:-translate-x-[45%] mt-2 w-[1150px] max-w-[92vw] bg-white rounded-3xl p-5 shadow-2xl border border-[#F3F4F6] z-[1000] text-left flex flex-col justify-between">
       
@@ -185,7 +199,7 @@ export function TreatmentsDropdown({ onItemClick }: TreatmentsDropdownProps) {
               <Link
                 key={`${treatment.title}-${index}`}
                 href={treatment.href}
-                onClick={onItemClick}
+                onClick={(e) => handleClick(e, treatment.href)}
                 className="group bg-white rounded-xl overflow-hidden border border-[#F3F4F6] shadow-xs hover:shadow-md transition-all duration-300 flex flex-col hover:-translate-y-0.5 cursor-pointer"
               >
                 {/* 3:2 aspect-ratio image container */}
@@ -225,7 +239,7 @@ export function TreatmentsDropdown({ onItemClick }: TreatmentsDropdownProps) {
         </div>
         <Link
           href="/contact#booking-form"
-          onClick={onItemClick}
+          onClick={(e) => handleClick(e, "/contact#booking-form")}
           className="inline-flex h-8 px-4 items-center justify-center rounded-lg bg-[#028174] hover:bg-[#01695F] text-white font-extrabold text-xs transition-colors gap-1.5 shadow-soft-sm shrink-0"
         >
           <MessageSquare className="w-3.5 h-3.5" />
