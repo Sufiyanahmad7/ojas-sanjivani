@@ -2,6 +2,7 @@ import React from "react";
 import { Header } from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
 import { TrustIndicators } from "@/sections/TrustIndicators";
+import { HealingJourney } from "@/sections/HealingJourney";
 import { ServicesOverview } from "@/sections/ServicesOverview";
 import { Diseases } from "@/sections/Diseases";
 import { DigitalAssistantCallout } from "@/sections/DigitalAssistantCallout";
@@ -29,6 +30,9 @@ export default function Home() {
 
         {/* 4. Trust Indicators */}
         <TrustIndicators />
+
+        {/* ⭐ NEW — How Your Healing Journey Works */}
+        <HealingJourney />
 
         {/* 5. Ayurveda & Homeopathy Cards (Services Overview) */}
         <ServicesOverview />
