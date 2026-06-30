@@ -22,21 +22,21 @@ export function ServicesOverview() {
       accentColor: "#028174",
       iconBg: "bg-white border-[#028174]/10 shadow-[#028174]/5",
       illustration: (
-        <Illustrations.Ayurveda 
-          size={24} 
-          primaryColor="#028174" 
-          secondaryColor="#0AB68B" 
-          lightGreen="#E6F4F0" 
-          mintColor="#F2FCF9" 
+        <Illustrations.Ayurveda
+          size={24}
+          primaryColor="#028174"
+          secondaryColor="#0AB68B"
+          lightGreen="#E6F4F0"
+          mintColor="#F2FCF9"
         />
       ),
       treatments: [
+        "Sexual Wellness",
         "Panchakarma",
-        "Arthritis Care",
-        "Diabetes Management",
         "Digestive Disorders",
         "Skin Diseases",
         "Weight Management",
+        "Arthritis Care",
       ],
       ctaLabel: "Explore Ayurveda",
       href: "#appointment",
@@ -53,12 +53,12 @@ export function ServicesOverview() {
       accentColor: "#2563EB",
       iconBg: "bg-white border-[#2563EB]/10 shadow-[#2563EB]/5",
       illustration: (
-        <Illustrations.Homeopathy 
-          size={24} 
-          primaryColor="#2563EB" 
-          secondaryColor="#3B82F6" 
-          lightGreen="#EBF3FF" 
-          mintColor="#F5F9FF" 
+        <Illustrations.Homeopathy
+          size={24}
+          primaryColor="#2563EB"
+          secondaryColor="#3B82F6"
+          lightGreen="#EBF3FF"
+          mintColor="#F5F9FF"
         />
       ),
       treatments: [
@@ -86,8 +86,8 @@ export function ServicesOverview() {
           <Badge variant="success" className="py-1 px-3 bg-[#028174]/10 text-[#028174] border-[#028174]/20">
             Our Medical Systems
           </Badge>
-          
-          <motion.h2 
+
+          <motion.h2
             className="font-heading text-3xl sm:text-4xl font-extrabold text-[#1E293B] tracking-tight"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -97,7 +97,7 @@ export function ServicesOverview() {
             Two Paths to Wellness
           </motion.h2>
 
-          <motion.p 
+          <motion.p
             className="text-[#64748B] text-xs sm:text-sm leading-relaxed"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -129,7 +129,7 @@ export function ServicesOverview() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 180px"
                 />
-                
+
                 {/* Floating Glassmorphic Icon Badge */}
                 <div className="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-white/90 backdrop-blur-sm border border-[#1E293B]/10 flex items-center justify-center shadow-sm z-10">
                   {card.illustration}
@@ -141,7 +141,7 @@ export function ServicesOverview() {
                 <div>
                   {/* Header Info */}
                   <div className="space-y-1">
-                    <span 
+                    <span
                       className="text-[10px] uppercase font-bold tracking-wider"
                       style={{ color: card.accentColor }}
                     >
@@ -168,7 +168,7 @@ export function ServicesOverview() {
                     <div className="grid grid-cols-2 gap-x-3 gap-y-1.5">
                       {card.treatments.slice(0, 6).map((treatment) => (
                         <div key={treatment} className="flex items-center gap-2">
-                          <div 
+                          <div
                             className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 opacity-90"
                             style={{ backgroundColor: `${card.accentColor}10` }}
                           >
