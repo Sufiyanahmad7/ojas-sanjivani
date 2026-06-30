@@ -12,43 +12,61 @@ import {
   Leaf 
 } from "lucide-react";
 
-// Steps Data definition
+// Steps Data definition with premium pastel color mapping
 const steps = [
   {
     number: "01",
     title: "Consultation",
     description: "Online consultation with experts about symptoms and history.",
     icon: MessageSquare,
+    bgColor: "#F2FBF7",
+    borderColor: "#D8F3E5",
+    iconBgColor: "#D1EFE0",
   },
   {
     number: "02",
     title: "Root Cause Diagnosis",
     description: "Specialists identify underlying imbalances, not just symptoms.",
     icon: Microscope,
+    bgColor: "#F4F9FF",
+    borderColor: "#DBECFF",
+    iconBgColor: "#D2E6FF",
   },
   {
     number: "03",
     title: "Personalized Treatment",
     description: "Custom Ayurvedic or Homeopathic plan matching your constitution.",
     icon: ClipboardList,
+    bgColor: "#F8F5FF",
+    borderColor: "#EDE2FF",
+    iconBgColor: "#EADFFF",
   },
   {
     number: "04",
     title: "Authentic Medicines",
     description: "Pure, natural formulations delivered directly to your doorstep.",
     icon: Pill,
+    bgColor: "#F5FAF4",
+    borderColor: "#DCEFD9",
+    iconBgColor: "#D2EAD0",
   },
   {
     number: "05",
     title: "Continuous Follow-up",
     description: "Regular follow-ups to tune dosages and monitor your recovery.",
     icon: HeartPulse,
+    bgColor: "#FFF8F2",
+    borderColor: "#FFE6CE",
+    iconBgColor: "#FFDEBF",
   },
   {
     number: "06",
     title: "Long-term Wellness",
     description: "Sustained vitality through lifestyle guidelines and prevention.",
     icon: Leaf,
+    bgColor: "#FFFDF5",
+    borderColor: "#FFF9DC",
+    iconBgColor: "#FFF2BF",
   },
 ];
 
@@ -118,22 +136,34 @@ export function HealingJourney() {
               <motion.div
                 key={step.number}
                 variants={cardVariants}
-                className="min-w-[250px] sm:min-w-[280px] lg:min-w-0 w-full shrink-0 snap-center lg:snap-align-none relative bg-white rounded-2xl shadow-soft-sm border border-border-main/50 p-4 flex flex-col justify-between gap-3 h-auto lg:h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-md hover:border-primary/50 group z-10"
+                style={{ 
+                  backgroundColor: step.bgColor, 
+                  borderColor: step.borderColor 
+                }}
+                className="min-w-[250px] sm:min-w-[280px] lg:min-w-0 w-full shrink-0 snap-center lg:snap-align-none relative rounded-[18px] shadow-sm border p-4.5 pt-6 flex flex-col justify-between gap-3 h-auto lg:h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md hover:!border-[#028174] group z-10 overflow-hidden"
               >
+                {/* Subtle top accent line in brand green */}
+                <div className="absolute top-0 left-0 right-0 h-[3.5px] bg-[#028174] rounded-t-[18px]" />
+
                 <div className="flex flex-col gap-3">
                   {/* Top card row: Icon and Badge */}
                   <div className="flex justify-between items-center w-full">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center transition-all duration-300 group-hover:bg-primary group-hover:text-white shadow-soft-sm">
-                      <Icon className="w-5 h-5" />
+                    <div 
+                      style={{ backgroundColor: step.iconBgColor }}
+                      className="w-10 h-10 rounded-full text-[#028174] flex items-center justify-center transition-all duration-300 group-hover:!bg-[#028174] group-hover:text-white shadow-soft-sm shrink-0"
+                    >
+                      <Icon className="w-5 h-5 transition-colors duration-300" />
                     </div>
-                    <span className="bg-primary/10 text-primary text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-primary/20 group-hover:bg-primary group-hover:text-white group-hover:border-transparent transition-colors duration-300">
+                    
+                    {/* Step Number Badge */}
+                    <span className="bg-[#E8F5E9] text-[#2E7D32] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full border border-[#C8E6C9] shrink-0">
                       {step.number}
                     </span>
                   </div>
 
                   {/* Card details */}
                   <div className="space-y-1 text-left">
-                    <h3 className="font-heading text-xs sm:text-sm font-extrabold text-[#1E293B] group-hover:text-primary transition-colors duration-300">
+                    <h3 className="font-heading text-xs sm:text-sm font-extrabold text-[#1E293B] group-hover:text-[#028174] transition-colors duration-300">
                       {step.title}
                     </h3>
                     <p className="text-[#64748B] text-[11px] leading-relaxed line-clamp-2">
