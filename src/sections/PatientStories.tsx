@@ -15,19 +15,19 @@ export function PatientStories() {
   const filteredStories = selectedCondition === "All"
     ? PATIENT_STORIES
     : PATIENT_STORIES.filter(story => {
-        const text = (story.treatmentReceived + " " + story.reviewText).toLowerCase();
-        if (selectedCondition === "Digestive") return text.includes("acid") || text.includes("ibs") || text.includes("digestion");
-        if (selectedCondition === "Joint Pain") return text.includes("joint") || text.includes("arthritis") || text.includes("back pain");
-        if (selectedCondition === "Diabetes") return text.includes("diabetes") || text.includes("sugar");
-        if (selectedCondition === "Skin Care") return text.includes("skin") || text.includes("acne") || text.includes("hair");
-        if (selectedCondition === "Thyroid") return text.includes("thyroid");
-        return false;
-      });
+      const text = (story.treatmentReceived + " " + story.reviewText).toLowerCase();
+      if (selectedCondition === "Digestive") return text.includes("acid") || text.includes("ibs") || text.includes("digestion");
+      if (selectedCondition === "Joint Pain") return text.includes("joint") || text.includes("arthritis") || text.includes("back pain");
+      if (selectedCondition === "Diabetes") return text.includes("diabetes") || text.includes("sugar");
+      if (selectedCondition === "Skin Care") return text.includes("skin") || text.includes("acne") || text.includes("hair");
+      if (selectedCondition === "Thyroid") return text.includes("thyroid");
+      return false;
+    });
 
   return (
     <section id="stories" className="py-12 sm:py-14 bg-mint/10 border-y border-border-main/30 relative">
       <div className="custom-container space-y-12">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
           <Badge variant="success" className="py-1 px-3 bg-[#028174]/10 text-[#028174] border-transparent">Patient Testimonials</Badge>
@@ -45,11 +45,10 @@ export function PatientStories() {
             <button
               key={category}
               onClick={() => setSelectedCondition(category)}
-              className={`text-xs px-4 py-2 rounded-full border transition-all cursor-pointer font-bold ${
-                selectedCondition === category
+              className={`text-xs px-4 py-2 rounded-full border transition-all cursor-pointer font-bold ${selectedCondition === category
                   ? "text-bg-white border-transparent shadow-soft-sm hover:opacity-90"
                   : "bg-bg-white text-text-secondary border-border-main hover:border-[#028174]/40 hover:text-[#028174]"
-              }`}
+                }`}
               style={selectedCondition === category ? {
                 background: "linear-gradient(90deg, #01695F 0%, #028174 100%)",
               } : undefined}
@@ -104,7 +103,7 @@ export function PatientStories() {
                       </h4>
                       <span className="text-[10px] text-text-secondary">Verified Recovered Case</span>
                     </div>
-                    
+
                     <span className="text-[9px] font-bold text-[#028174]/80 bg-[#028174]/5 px-2 py-0.5 rounded flex items-center gap-1">
                       <Sparkles className="w-3 h-3 text-[#028174] animate-pulse" /> {story.location}
                     </span>

@@ -13,47 +13,47 @@ function SupportAgentIcon({ className = "w-8 h-8" }: { className?: string }) {
       xmlns="http://www.w3.org/2000/svg"
     >
       {/* User Shoulder (solid white) */}
-      <path 
-        d="M6 21c0-2.8 2.7-5 6-5s6 2.2 6 5H6z" 
-        fill="#FFFFFF" 
+      <path
+        d="M6 21c0-2.8 2.7-5 6-5s6 2.2 6 5H6z"
+        fill="#FFFFFF"
       />
-      
+
       {/* User Head (solid white) */}
-      <circle 
-        cx="12" 
-        cy="10.5" 
-        r="4" 
-        fill="#FFFFFF" 
+      <circle
+        cx="12"
+        cy="10.5"
+        r="4"
+        fill="#FFFFFF"
       />
-      
+
       {/* Headset Arc (dark outline) */}
-      <path 
-        d="M7.5 10.5c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5" 
-        stroke="#111827" 
-        strokeWidth="2.2" 
-        fill="none" 
+      <path
+        d="M7.5 10.5c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"
+        stroke="#111827"
+        strokeWidth="2.2"
+        fill="none"
         strokeLinecap="round"
       />
-      
+
       {/* Ear Cups (dark rects) */}
       <rect x="5.8" y="9" width="1.8" height="3.5" rx="0.8" fill="#111827" />
       <rect x="16.4" y="9" width="1.8" height="3.5" rx="0.8" fill="#111827" />
-      
+
       {/* Mic Stem (dark line) */}
-      <path 
-        d="M16.5 11.5c0 1.5-1.2 2.5-2.5 2.5h-1.5" 
-        stroke="#111827" 
-        strokeWidth="1.5" 
-        fill="none" 
+      <path
+        d="M16.5 11.5c0 1.5-1.2 2.5-2.5 2.5h-1.5"
+        stroke="#111827"
+        strokeWidth="1.5"
+        fill="none"
         strokeLinecap="round"
       />
-      
+
       {/* Speech/Chat Bubble at bottom right (solid purple) */}
-      <path 
-        d="M14.5 15h3.2a1.3 1.3 0 0 1 1.3 1.3v1a0.5 0 0 1-.85.35l-.45-.45h-3.2a1.3 1.3 0 0 1-1.3-1.3v-.3a1.3 1.3 0 0 1 1.3-1.3z" 
-        fill="#A855F7" 
+      <path
+        d="M14.5 15h3.2a1.3 1.3 0 0 1 1.3 1.3v1a0.5 0 0 1-.85.35l-.45-.45h-3.2a1.3 1.3 0 0 1-1.3-1.3v-.3a1.3 1.3 0 0 1 1.3-1.3z"
+        fill="#A855F7"
       />
-      
+
       {/* Three white dots inside the purple speech bubble */}
       <circle cx="15.2" cy="16.2" r="0.3" fill="#FFFFFF" />
       <circle cx="16.2" cy="16.2" r="0.3" fill="#FFFFFF" />
@@ -103,7 +103,7 @@ export function FloatingWidgets() {
 
     setTimeout(() => {
       let botResponse = "Thank you for reaching out. Our Ayurvedic and Homeopathic experts are available to guide you. Would you like to schedule a free detailed call with them?";
-      
+
       const normalized = text.toLowerCase();
       if (normalized.includes("dosha")) {
         botResponse = quickReplies[0].reply;
@@ -142,7 +142,7 @@ export function FloatingWidgets() {
 
       {/* RIGHT WIDGET: AI Assistant Chat Trigger + Modal */}
       <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 md:bottom-6 md:right-6 z-[9999] flex flex-col items-end gap-4 pointer-events-none">
-        
+
         {/* Digital Assistant Chat Modal */}
         <AnimatePresence>
           {isAiOpen && (
@@ -179,25 +179,22 @@ export function FloatingWidgets() {
                 {messages.map((msg) => (
                   <div
                     key={msg.id}
-                    className={`flex gap-2 max-w-[85%] ${
-                      msg.sender === "user" ? "ml-auto flex-row-reverse" : "mr-auto"
-                    }`}
+                    className={`flex gap-2 max-w-[85%] ${msg.sender === "user" ? "ml-auto flex-row-reverse" : "mr-auto"
+                      }`}
                   >
                     <div
-                      className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs ${
-                        msg.sender === "user"
+                      className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs ${msg.sender === "user"
                           ? "bg-[#E6F3F2] text-[#028174]"
                           : "bg-[#028174] text-white"
-                      }`}
+                        }`}
                     >
                       {msg.sender === "user" ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
                     </div>
                     <div
-                      className={`p-3 rounded-2xl text-xs leading-relaxed ${
-                        msg.sender === "user"
+                      className={`p-3 rounded-2xl text-xs leading-relaxed ${msg.sender === "user"
                           ? "bg-[#028174] text-white rounded-tr-none"
                           : "bg-white text-[#374151] border border-[#F3F4F6] rounded-tl-none shadow-sm"
-                      }`}
+                        }`}
                     >
                       {msg.text}
                     </div>

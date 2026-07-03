@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -84,9 +85,21 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${poppins.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-bg-white text-text-main font-sans selection:bg-light-green selection:text-primary">
+      <body
+        className="min-h-full flex flex-col bg-bg-white text-text-main font-sans selection:bg-light-green selection:text-primary"
+        suppressHydrationWarning
+      >
         {children}
+        <Script
+          src="https://ojassanjivani.rightbraininfotech.in/im_livechat/loader/1"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://ojassanjivani.rightbraininfotech.in/im_livechat/assets_embed.js"
+          strategy="beforeInteractive"
+        />
       </body>
     </html>
   );
