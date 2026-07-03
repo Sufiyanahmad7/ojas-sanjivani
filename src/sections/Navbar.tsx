@@ -48,7 +48,7 @@ export function Navbar({ scrolled = false }: NavbarProps) {
     { label: "About", href: "/about" },
     { label: "Treatments", href: "/#services", dropdown: "treatments" },
     { label: "Diseases", href: "/#diseases", dropdown: "diseases" },
-    { label: "Medicine", href: "/#pharmacy" },
+    // { label: "Medicine", href: "/#pharmacy" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ];
