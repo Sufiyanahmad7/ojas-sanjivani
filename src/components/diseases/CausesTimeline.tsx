@@ -32,24 +32,58 @@ export function CausesTimeline({ causes }: CausesTimelineProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* LEFT: Conceptual Graphic */}
-          <div className="lg:col-span-5 relative w-full aspect-[4/3] sm:max-w-md lg:max-w-none mx-auto bg-gradient-to-tr from-[#028174]/5 to-[#0E9F6E]/10 rounded-[24px] border border-border-main/50 overflow-hidden flex flex-col justify-center items-center p-8 text-center shadow-soft-sm">
-            <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-[#028174] shadow-soft-md">
-              <Icons.ShieldAlert className="w-8 h-8" />
+          <div className="lg:col-span-5 relative w-full sm:max-w-md lg:max-w-none mx-auto bg-gradient-to-br from-white to-[#F0FAF7] rounded-[24px] border border-border-main/50 p-8 text-left shadow-soft-lg flex flex-col justify-between overflow-hidden">
+            {/* Background glowing soft green orb */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-[#028174]/5 filter blur-2xl pointer-events-none" />
+            
+            <div className="space-y-4 relative z-10">
+              <Badge variant="success" className="py-1 px-3 bg-[#028174]/8 text-[#028174] border-[#028174]/15 uppercase tracking-wider text-[9px] font-extrabold">
+                Our Healing Core
+              </Badge>
+              
+              <h3 className="font-heading text-xl sm:text-2xl font-black text-text-main leading-tight">
+                Root-Cause vs.<br />
+                <span className="text-[#028174]">Symptom Masking</span>
+              </h3>
+              
+              <p className="text-xs sm:text-[13px] text-text-secondary leading-relaxed font-medium">
+                Unlike conventional medicine that suppresses symptoms, we analyze these environmental and physiological causes to restore long-term cellular balance.
+              </p>
             </div>
-            <h3 className="font-heading text-lg font-bold text-text-main mt-6">
-              Root-Cause vs. Symptom Masking
-            </h3>
-            <p className="text-xs text-text-secondary mt-3 leading-relaxed max-w-xs">
-              Unlike conventional medicine that suppresses symptoms, we analyze these environmental and physiological causes to restore long-term cellular balance.
-            </p>
-            <div className="w-full h-px bg-border-main/50 my-6" />
-            <div className="flex gap-4 items-center">
-              <div className="flex items-center gap-1.5 text-xs text-text-secondary font-bold">
+
+            {/* Contrast Comparison Grid */}
+            <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-border-main/50 relative z-10">
+              <div className="space-y-1.5">
+                <span className="text-[10px] font-extrabold text-red-500 uppercase tracking-wider">
+                  Symptom Masking
+                </span>
+                <p className="text-[11px] text-text-secondary leading-normal font-bold">
+                  • Temporary relief<br />
+                  • Chemical dependency<br />
+                  • Ignored triggers
+                </p>
+              </div>
+              
+              <div className="space-y-1.5 border-l border-border-main/50 pl-4">
+                <span className="text-[10px] font-extrabold text-[#028174] uppercase tracking-wider">
+                  Root-Cause Relief
+                </span>
+                <p className="text-[11px] text-[#028174] leading-normal font-bold">
+                  • Cellular healing<br />
+                  • Permanent relief<br />
+                  • Personalized care
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom highlights */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-8 pt-5 border-t border-border-main/50 relative z-10">
+              <div className="flex items-center gap-1.5 text-xs text-text-secondary font-extrabold">
                 <Icons.CheckCircle2 className="w-4 h-4 text-[#0E9F6E]" />
                 <span>Permanent Relief</span>
               </div>
-              <div className="w-1.5 h-1.5 rounded-full bg-border-main" />
-              <div className="flex items-center gap-1.5 text-xs text-text-secondary font-bold">
+              <div className="w-1.5 h-1.5 rounded-full bg-slate-300" />
+              <div className="flex items-center gap-1.5 text-xs text-text-secondary font-extrabold">
                 <Icons.CheckCircle2 className="w-4 h-4 text-[#0E9F6E]" />
                 <span>Zero Recurrence</span>
               </div>
