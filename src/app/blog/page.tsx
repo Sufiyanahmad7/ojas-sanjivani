@@ -13,17 +13,16 @@ import {
   Heart, 
   Activity, 
   TrendingUp, 
-  ExternalLink,
-  ChevronRight,
   ShieldAlert,
-  ArrowLeft
+  ArrowLeft,
+  Users
 } from "lucide-react";
 import { Header } from "@/sections/Header";
 import { Footer } from "@/sections/Footer";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 
-// Disease / Blog database focusing on priority conditions
+// Disease / Blog database with general information and NO specific medicine names or product marketing
 const ARTICLES = [
   {
     id: "erectile-dysfunction",
@@ -34,7 +33,7 @@ const ARTICLES = [
     date: "July 01, 2026",
     trending: true,
     summary: "Erectile dysfunction (ED) is often an early indicator of deeper cardiovascular, endocrine, or psychological stress. Discover how natural systems restore long-term capacity without synthetic dependence.",
-    image: "/images/ayurveda-card-bg.png",
+    image: "/images/diseases/sexual-problems.png",
     content: {
       introduction: "In Ayurveda, Erectile Dysfunction is described under 'Klaibya' (loss of sexual vigor). Unlike modern chemical stimulants that force temporary vasodilation and carry cardiovascular risks, Ayurveda and Homeopathy work in synergy to restore natural blood circulation, calm the nervous system, and strengthen reproductive tissues (Shukra Dhatu) for permanent recovery.",
       causes: [
@@ -50,21 +49,21 @@ const ARTICLES = [
         "Accompanied drop in sexual desire (libido) and performance anxiety."
       ],
       ayurvedaApproach: {
-        title: "Ayurvedic Path (Vajikarana Chikitsa & Rejuvenation)",
+        title: "Ayurvedic Therapeutic Principles",
         description: "Ayurveda utilizes Vajikarana (aphrodisiac therapy) to nourish all seven bodily tissues, culminating in Shukra Dhatu. It focuses on pacifying Apana Vayu (the sub-dosha of Vata controlling pelvic organs) and enhancing Ojas (vital life force).",
-        herbs: [
-          { name: "Ashwagandha (Withania somnifera)", desc: "A key adaptogen that lowers anxiety, increases nitric oxide production, and supports healthy testosterone synthesis." },
-          { name: "Safed Musli (Chlorophytum borivilianum)", desc: "Acts as a potent natural spermatogenic and vitality booster, improving tissue vascularity." },
-          { name: "Kapikachhu (Mucuna pruriens)", desc: "Contains natural L-Dopa, which raises dopamine levels to enhance mood, libido, and neural coordination." }
+        principles: [
+          { title: "Nerve Calming (Vata Shamana)", desc: "Relieving mental strain and regulating nervous system coordination." },
+          { title: "Vital Nourishment (Dhatu Poshan)", desc: "Feeding structural tissues to restore physical stamina." },
+          { title: "Vascular Clearing (Srotas Shodhana)", desc: "Promoting healthy micro-capillary blood circulation." }
         ]
       },
       homeopathyApproach: {
-        title: "Homeopathic Constitutional Therapy",
+        title: "Homeopathic Constitutional Path",
         description: "Homeopathy addresses the psychogenic and circulatory dynamics behind performance issues, selecting remedies tailored to the patient's individual stress response and physical constitution.",
-        remedies: [
-          { name: "Lycopodium Clavatum", desc: "For individuals suffering from performance anxiety, premature aging, digestive issues, and low self-confidence." },
-          { name: "Selenium Metallicum", desc: "Indicated for marked physical debility, chronic fatigue, and weakness following illness." },
-          { name: "Agnus Castus", desc: "Suited for complete lack of libido, coldness of organs, and extreme mental and physical exhaustion." }
+        principles: [
+          { title: "Mental-Emotional Balancing", desc: "Treating secondary performance anxiety and self-confidence factors." },
+          { title: "Vascular Optimization", desc: "Stimulating vascular responses without synthetic pressure." },
+          { title: "Nervous Re-education", desc: "Balancing autonomic reflex thresholds to restore standard function." }
         ]
       },
       lifestyleTips: [
@@ -84,9 +83,9 @@ const ARTICLES = [
     date: "June 28, 2026",
     trending: true,
     summary: "Premature Ejaculation (PE) is largely linked to hypersensitivity and nervous system overexcitation. Learn how constitutional therapies restore neural calm and mental endurance.",
-    image: "/images/homeopathy-card-bg.png",
+    image: "/images/diseases/sexual-problems.png",
     content: {
-      introduction: "Known in Ayurveda as 'Shukragata Vata' or 'Shighrapatana', Premature Ejaculation is primarily classified as a Vata disorder. The mobile, quick nature of Vata dosha hyper-activates the nervous system, leading to rapid stimulation. Natural treatment aims to ground the Vata dosha and build neural resilience using calming Ayurvedic herbs and targeted Homeopathic remedies.",
+      introduction: "Known in Ayurveda as 'Shukragata Vata' or 'Shighrapatana', Premature Ejaculation is primarily classified as a Vata disorder. The mobile, quick nature of Vata dosha hyper-activates the nervous system, leading to rapid stimulation. Natural treatment aims to ground the Vata dosha and build neural resilience using calming Ayurvedic formulations and targeted Homeopathic constitutional remedies.",
       causes: [
         "Vata Dosha Hyperactivity: Excitable nervous response due to excessive stress, travel, or irregular habits.",
         "Psychological Conditioning: Past anxiety, guilt, or fear of performance.",
@@ -99,21 +98,21 @@ const ARTICLES = [
         "Growing performance anxiety and secondary avoidance of intimacy."
       ],
       ayurvedaApproach: {
-        title: "Ayurvedic Calming and Grounding Therapy",
-        description: "Ayurveda focuses on nervous system pacification (Vata-Shamana) and muscle strengthening. Rejuvenative (Rasayana) herbs are used to stabilize the flow of Apana Vayu.",
-        herbs: [
-          { name: "Jatiphala (Nutmeg)", desc: "A natural sedative and nervine tonic that slows down sensory transmission and extends latency." },
-          { name: "Shatavari (Asparagus racemosus)", desc: "Nourishing and cooling herb that reduces systemic heat (Pitta) and strengthens structural tissues." },
-          { name: "Brahmi (Bacopa monnieri)", desc: "Calms the mental channels (Manovaha Srotas), reducing performance anxiety and emotional over-excitement." }
+        title: "Ayurvedic Calming and Grounding Path",
+        description: "Ayurveda focuses on nervous system pacification (Vata-Shamana) and muscle strengthening. Rejuvenative (Rasayana) principles are used to stabilize the flow of Apana Vayu.",
+        principles: [
+          { title: "Sensory Latency Extension", desc: "Calming sensory transmission to naturally delay autonomic reflexes." },
+          { title: "Tonic Deep Nourishment", desc: "Cooling somatic heat and strengthening local tissue structure." },
+          { title: "Mental Channel Stabilization", desc: "Stabilizing the channels of the mind (Manovaha Srotas) to reduce anxiety." }
         ]
       },
       homeopathyApproach: {
         title: "Homeopathic Neural Regulation",
         description: "Homeopathic treatment focuses on reducing neural excitability and anxiety, helping the body self-regulate ejaculation reflexes naturally.",
-        remedies: [
-          { name: "Phosphoric Acid", desc: "Indicated for sexual weakness accompanied by mental apathy, grief, lack of concentration, and physical fatigue." },
-          { name: "Conium Maculatum", desc: "Indicated when there is local irritation, history of suppressed desire, or structural weakness of pelvic glands." },
-          { name: "Graphites", desc: "Suited for individuals prone to skin conditions and obesity, who experience sluggish reflexes and lack of pelvic nerve tone." }
+        principles: [
+          { title: "Apathy & Exhaustion Relief", desc: "Revitalizing the nervous system from physical and emotional fatigue." },
+          { title: "Glandular Congestion Clearing", desc: "Relieving local irritation or weakness in pelvic glands." },
+          { title: "Reflex Reconditioning", desc: "Stabilizing nerve thresholds to avoid over-excitability." }
         ]
       },
       lifestyleTips: [
@@ -133,7 +132,7 @@ const ARTICLES = [
     date: "June 25, 2026",
     trending: false,
     summary: "A drop in desire and testosterone levels is the body's signal of systemic depletion. Discover how to rebuild your core vital energy (Ojas) and reset hormonal health.",
-    image: "/images/ayurveda-card.png",
+    image: "/images/diseases/sexual-problems.png",
     content: {
       introduction: "Low libido and low testosterone are direct signs of 'Dhatu Kshaya' (tissue depletion) and low 'Ojas' (the end product of digestion and cellular health). In natural medicine, instead of providing synthetic hormone replacement therapies (which shut down natural testicular function), we stimulate the endocrine glands to secrete hormones naturally while nourishing the core tissues.",
       causes: [
@@ -149,21 +148,21 @@ const ARTICLES = [
         "Poor recovery from physical exercise and loss of general enthusiasm."
       ],
       ayurvedaApproach: {
-        title: "Ayurvedic Rebuilding (Rasayana & Vajikarana)",
+        title: "Ayurvedic Rebuilding Path",
         description: "Ayurveda aims to clear toxins ('Ama') and activate the tissue digestive fire (Dhatu-Agni) to ensure that nutrients are fully converted into reproductive tissue and Ojas.",
-        herbs: [
-          { name: "Gokshura (Tribulus terrestris)", desc: "Renowned for supporting urinary tract health and naturally stimulating LH (Luteinizing Hormone) to support testosterone production." },
-          { name: "Shilajit (Asphaltum punjabianum)", desc: "A mineral-rich biomass that enhances mitochondrial energy, improves iron assimilation, and elevates free testosterone levels." },
-          { name: "Kaunch Beej", desc: "Builds stamina, promotes muscle tone, and balances hormonal and neurotransmitter secretions." }
+        principles: [
+          { title: "Endocrine Stimulation", desc: "Stimulating the natural pathways responsible for healthy hormone release." },
+          { title: "Mitochondrial Energy Support", desc: "Enhancing cellular energy, iron assimilation, and free testosterone conversion." },
+          { title: "Endurance Building", desc: "Promoting physical muscle tone, stamina, and nervous cell balance." }
         ]
       },
       homeopathyApproach: {
-        title: "Homeopathic Endocrine Stimulants",
+        title: "Homeopathic Endocrine Stimulation",
         description: "Homeopathy works on the pituitary-testicular axis to encourage self-regulation, selecting remedies based on structural and psychological symptoms of depletion.",
-        remedies: [
-          { name: "Testosteronum", desc: "Used in low potencies to stimulate the endocrine glands and restore natural hormonal equilibrium." },
-          { name: "Nuphar Luteum", desc: "Indicated for complete absence of desire, voluptuous thoughts without physical capability, and general weakness." },
-          { name: "Baryta Carbonica", desc: "Suited for early senility, memory loss, weight gain, and general metabolic sluggishness." }
+        principles: [
+          { title: "Hormonal Equilibration", desc: "Nourishing glandular tissues to restore balanced hormone production." },
+          { title: "Sensory Revitalization", desc: "Restoring active nerve interest and physical capabilities." },
+          { title: "Metabolic Acceleration", desc: "Reversing sluggish metabolism, memory loss, and age-related decline." }
         ]
       },
       lifestyleTips: [
@@ -183,7 +182,7 @@ const ARTICLES = [
     date: "June 20, 2026",
     trending: true,
     summary: "Diabetes (Madhumeha) is not just a disease of blood sugar, but a deep metabolic imbalance of the fat and muscle tissues. Learn how natural therapies restore tissue sensitivity.",
-    image: "/images/homeopathy-card.png",
+    image: "/images/diseases/diabetes.png",
     content: {
       introduction: "Ayurveda terms Diabetes Mellitus as 'Madhumeha' (sweet urine), classifying it under Prameha (urinary disorders caused by Kapha imbalances). In Homeopathy and Ayurveda, the focus is not merely on checking daily blood glucose levels, but on curing insulin resistance at the cellular level by optimizing the metabolic fire (Dhatvagni) and improving liver function.",
       causes: [
@@ -201,19 +200,19 @@ const ARTICLES = [
       ayurvedaApproach: {
         title: "Ayurvedic Metabolic Corrections",
         description: "Ayurveda uses bitter, astringent, and metabolic stimulants to dry up excess moisture (Kleda) and Kapha, restoring tissue sensitivity to insulin.",
-        herbs: [
-          { name: "Gudmar (Gymnema sylvestre)", desc: "Known as 'sugar destroyer' for its ability to block sweet taste receptors and support healthy insulin secretion." },
-          { name: "Amalaki & Haridra (Nisha-Amalaki)", desc: "A powerful combination of Turmeric and Amla that prevents diabetic complications, reduces inflammation, and protects the kidneys." },
-          { name: "Vijaysar (Pterocarpus marsupium)", desc: "The wood is traditionally used to make drinking vessels; it regenerates beta cells of the pancreas." }
+        principles: [
+          { title: "Insulin Sensitivity Restoration", desc: "Clearing blockages in receptors and support healthy insulin secretion." },
+          { title: "Complication Prevention", desc: "Reducing inflammatory markers and protecting kidney and neurological health." },
+          { title: "Beta Cell Support", desc: "Stimulating and regenerating the digestive fire of pancreatic glands." }
         ]
       },
       homeopathyApproach: {
         title: "Homeopathic Pancreatic & Vascular Support",
         description: "Homeopathy addresses the vascular damage and neuropathic complications of diabetes while supporting metabolic balance.",
-        remedies: [
-          { name: "Syzygium Jambolanum", desc: "One of the most effective remedies for rapidly reducing sugar in the urine and blood; relieves extreme thirst and frequent urination." },
-          { name: "Gymnema Sylvestre", desc: "Used in mother tincture form to improve sugar tolerance and support pancreatic efficiency." },
-          { name: "Phosphoricum Acidum", desc: "Excellent for patients with diabetes triggered by emotional grief or mental strain, showing marked nervous weakness." }
+        principles: [
+          { title: "Symptom Moderation", desc: "Reducing excess sugar load in blood and urine; relieving extreme thirst." },
+          { title: "Tolerance Improvements", desc: "Optimizing sugar tolerance levels and supporting pancreatic output." },
+          { title: "Stress-Induced Diabetes Care", desc: "Treating diabetic triggers linked to chronic grief or mental strain." }
         ]
       },
       lifestyleTips: [
@@ -233,7 +232,7 @@ const ARTICLES = [
     date: "June 15, 2026",
     trending: false,
     summary: "Long-term antacids weaken stomach acid, creating chronic indigestion and IBS. Discover how natural systems restore digestive fire (Agni) without dependency.",
-    image: "/images/ayurveda-card-bg.png",
+    image: "/images/diseases/digestion.png",
     content: {
       introduction: "Antacid pills temporarily suppress stomach acid, but they fail to address why acid is moving upwards. In Ayurveda, this is 'Amla Pitta' (sour/liquid Pitta imbalance), and in Irritable Bowel Syndrome (IBS), it represents a disturbed gut-brain axis ('Grahani'). Natural healing focuses on cooling the stomach lining, strengthening the lower esophageal sphincter, and regulating intestinal motility.",
       causes: [
@@ -249,21 +248,21 @@ const ARTICLES = [
         "Nausea, headache, and fatigue after meals."
       ],
       ayurvedaApproach: {
-        title: "Ayurvedic Pitta-Pacifying & Agni-Balancing Path",
+        title: "Ayurvedic Pitta-Pacifying Path",
         description: "Ayurveda clears excess acidity by administering cooling herbs and mild purgatives, followed by gut-binding remedies that repair the intestinal lining.",
-        herbs: [
-          { name: "Yashtimadhu (Licorice)", desc: "Coats and heals the stomach lining, acting as a natural buffer against acid burn." },
-          { name: "Amala (Emblica officinalis)", desc: "The ultimate cooling Rasayana that pacifies Pitta without reducing the natural digestive fire (Agni)." },
-          { name: "Kutaj (Holarrhena antidysenterica)", desc: "Excellent for restoring bowel regularity, reducing spasms, and curing chronic diarrhea in IBS." }
+        principles: [
+          { title: "Mucosal Coating & Repair", desc: "Coating and healing the stomach lining to act as a buffer against acid burn." },
+          { title: "Systemic Cooling", desc: "Cooling and pacifying excess Pitta without reducing natural digestive fire." },
+          { title: "Intestinal Motility Regulation", desc: "Restoring bowel regularity and soothing chronic colonic spasms." }
         ]
       },
       homeopathyApproach: {
         title: "Homeopathic Gastro-Intestinal Harmony",
         description: "Homeopathy uses micro-doses to calm the hyperactive enteric nervous system, relieving gut spasms and restoring normal mucosal secretion.",
-        remedies: [
-          { name: "Nux Vomica", desc: "The top remedy for acidity, bloating, and IBS caused by sedentary lifestyle, spicy foods, alcohol, and high stress." },
-          { name: "Carbo Vegetabilis", desc: "For extreme bloating, gas in the upper abdomen, sour belching, and slow digestion where everything turns to gas." },
-          { name: "Robinia Pseudacacia", desc: "Excellent for intense, sour acid reflux that causes burning in the throat and teeth-edge sensitivity." }
+        principles: [
+          { title: "Sedentary & Stress relief", desc: "Targeting acidity and cramps caused by high stress and modern lifestyle." },
+          { title: "Upper Abdomen Relief", desc: "Relieving upper stomach bloating, gaseous distension, and sour belching." },
+          { title: "Sphincter Strengthening", desc: "Addressing intense reflux that causes burning in the esophagus and throat." }
         ]
       },
       lifestyleTips: [
@@ -283,7 +282,7 @@ const ARTICLES = [
     date: "June 10, 2026",
     trending: false,
     summary: "Hair health is a direct reflection of internal nutrition and blood quality. Learn how natural therapies arrest hair fall and reactivate dormant follicles.",
-    image: "/images/homeopathy-card.png",
+    image: "/images/diseases/hair-skin.png",
     content: {
       introduction: "Hair fall (Khalitya in Ayurveda) is not merely a cosmetic issue. According to holistic systems, hair is a by-product of bone tissue (Asthi Dhatu) and is fed directly by blood channels (Rakta Dhatu). When toxins build up in the blood or Pitta dosha overheats the scalp, follicles shrink. Ayurveda and Homeopathy detoxify the blood and restore follicular nutrition from within.",
       causes: [
@@ -299,25 +298,25 @@ const ARTICLES = [
         "Dry, itchy scalp accompanied by excessive dandruff."
       ],
       ayurvedaApproach: {
-        title: "Ayurvedic Blood Purifiers and Hair Tonics",
+        title: "Ayurvedic Blood Purification Path",
         description: "Ayurveda treats hair loss by cooling Pitta dosha, purifying Rakta Dhatu, and nourishing the scalp with herb-infused oils (Shiro-Abhyanga).",
-        herbs: [
-          { name: "Bhringraj (Eclipta alba)", desc: "Known as the 'King of Hair', it stimulates hair growth, prevents premature graying, and calms the mind." },
-          { name: "Amalaki (Indian Gooseberry)", desc: "Rich in Vitamin C and antioxidants, it strengthens roots, fights dandruff, and nourishes follicles." },
-          { name: "Manjistha (Rubia cordifolia)", desc: "A supreme blood-purifying herb that eliminates systemic toxins (Ama) affecting hair roots." }
+        principles: [
+          { title: "Root Vitalization", desc: "Stimulating follicular output and calming the localized neural system." },
+          { title: "Scalp Nourishment", desc: "Providing essential micro-nutrients to strengthen root anchors." },
+          { title: "Rakta Dhatu Purification", desc: "Detoxifying blood and eliminating deep systemic toxins." }
         ]
       },
       homeopathyApproach: {
         title: "Homeopathic Follicular Stimulation",
         description: "Homeopathy stimulates the body's self-healing to stop hair thinning and encourages hair regrowth by targeting hormonal and stress triggers.",
-        remedies: [
-          { name: "Acidum Phosphoricum", desc: "For hair loss resulting from grief, shock, acute illness (like high fever), or chronic mental fatigue." },
-          { name: "Wiesbaden", desc: "A mineral-spring remedy known to make hair grow faster, thicker, and darker." },
-          { name: "Fluoricum Acidum", desc: "Specifically used for patchy hair loss (Alopecia Areata) and brittle hair that breaks easily." }
+        principles: [
+          { title: "Stress Alopecia Recovery", desc: "Arresting hair loss triggered by grief, trauma, or acute physical illness." },
+          { title: "Growth Acceleration", desc: "Nourishing hair roots to encourage faster, thicker, and darker regrowth." },
+          { title: "Dermatitis Clearing", desc: "Curing dry, patchy hair fall accompanied by scalp irritation." }
         ]
       },
       lifestyleTips: [
-        "Scalp Massage: Gently massage your scalp 2-3 times a week with warm organic coconut oil infused with Bhringraj, Rosemary, or Amla.",
+        "Scalp Massage: Gently massage your scalp 2-3 times a week with warm organic coconut oil infused with traditional herbs.",
         "Cool Showers: Never wash your hair with hot water; it damages the root structure. Use lukewarm or cool water.",
         "Nourishing Diet: Include iron-rich foods like black sesame seeds, spinach, beetroot, pomegranate, and soaked almonds.",
         "Stress Relief: Practice Shirshasana (Headstand) or Adho Mukha Svanasana (Downward-facing Dog) to increase blood flow to the head."
@@ -649,13 +648,13 @@ export default function BlogPage() {
                         </p>
                         
                         <div className="space-y-3 pt-2">
-                          {selectedArticle.content.ayurvedaApproach.herbs.map((h, i) => (
+                          {selectedArticle.content.ayurvedaApproach.principles.map((p, i) => (
                             <div key={i} className="border-l-2 border-[#43A047] pl-3 py-1 space-y-0.5">
                               <span className="text-[11px] sm:text-xs font-extrabold text-[#028174] block">
-                                {h.name}
+                                {p.title}
                               </span>
                               <span className="text-[10px] text-text-secondary leading-relaxed block font-medium">
-                                {h.desc}
+                                {p.desc}
                               </span>
                             </div>
                           ))}
@@ -677,19 +676,34 @@ export default function BlogPage() {
                         </p>
                         
                         <div className="space-y-3 pt-2">
-                          {selectedArticle.content.homeopathyApproach.remedies.map((r, i) => (
+                          {selectedArticle.content.homeopathyApproach.principles.map((p, i) => (
                             <div key={i} className="border-l-2 border-[#028174] pl-3 py-1 space-y-0.5">
                               <span className="text-[11px] sm:text-xs font-extrabold text-[#028174] block">
-                                {r.name}
+                                {p.title}
                               </span>
                               <span className="text-[10px] text-text-secondary leading-relaxed block font-medium">
-                                {r.desc}
+                                {p.desc}
                               </span>
                             </div>
                           ))}
                         </div>
                       </div>
 
+                    </div>
+
+                    {/* Consult Doctor Online Safety Box (Core Punchline) */}
+                    <div className="p-5 rounded-2xl bg-[#F0FAF7] border border-[#028174]/20 flex items-start gap-4 shadow-sm/5">
+                      <div className="w-10 h-10 rounded-full bg-[#028174]/10 flex items-center justify-center text-[#028174] shrink-0 mt-0.5">
+                        <Users className="w-5 h-5" />
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className="text-xs sm:text-sm font-extrabold text-[#028174] uppercase tracking-wider">
+                          Consult Doctor Online • Safe & Personalized Care
+                        </h4>
+                        <p className="text-xs text-[#1E293B] font-semibold leading-relaxed">
+                          Do not self-medicate or purchase generic herbs/remedies online. Natural healing depends on constitutional diagnosis (Prakriti and individual parameters). Connect with certified specialists securely from the comfort of your home.
+                        </p>
+                      </div>
                     </div>
 
                     {/* Diet & Lifestyle Tips */}
@@ -711,7 +725,7 @@ export default function BlogPage() {
                       </div>
                     </div>
 
-                    {/* Sticky-like bottom CTA box */}
+                    {/* Bottom CTA Box */}
                     <div className="p-6 rounded-2xl bg-gradient-to-br from-[#028174] to-[#01695F] text-white flex flex-col sm:flex-row items-center justify-between gap-5 shadow-lg shadow-[#028174]/15 mt-8 border border-white/5">
                       <div className="text-center sm:text-left space-y-1">
                         <h4 className="text-sm sm:text-base font-extrabold tracking-tight">

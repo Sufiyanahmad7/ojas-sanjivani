@@ -27,6 +27,53 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
 
   const current = testimonials[index];
 
+  // Dynamic sanitization to replace medicine box thumbnails with clean disease/vitality illustrations
+  let displayThumbnail = current.videoThumbnail;
+  if (displayThumbnail && displayThumbnail.includes("product-")) {
+    const diseaseLower = (current.disease || "").toLowerCase();
+    if (
+      diseaseLower.includes("erectile") || 
+      diseaseLower.includes("ejaculation") || 
+      diseaseLower.includes("libido") || 
+      diseaseLower.includes("sexual") || 
+      diseaseLower.includes("potency") ||
+      diseaseLower.includes("vitality") ||
+      diseaseLower.includes("dysfunction") ||
+      diseaseLower.includes("oligospermia")
+    ) {
+      displayThumbnail = "/images/diseases/sexual-problems.png";
+    } else if (diseaseLower.includes("diabetes") || diseaseLower.includes("sugar") || diseaseLower.includes("diabetic")) {
+      displayThumbnail = "/images/diseases/diabetes.png";
+    } else if (
+      diseaseLower.includes("acid") || 
+      diseaseLower.includes("ibs") || 
+      diseaseLower.includes("stomach") || 
+      diseaseLower.includes("digestion") || 
+      diseaseLower.includes("piles") ||
+      diseaseLower.includes("fatty liver") ||
+      diseaseLower.includes("gallbladder") ||
+      diseaseLower.includes("jaundice")
+    ) {
+      displayThumbnail = "/images/diseases/digestion.png";
+    } else if (diseaseLower.includes("hair") || diseaseLower.includes("skin") || diseaseLower.includes("psoriasis") || diseaseLower.includes("alopecia")) {
+      displayThumbnail = "/images/diseases/hair-skin.png";
+    } else if (
+      diseaseLower.includes("migraine") || 
+      diseaseLower.includes("insomnia") || 
+      diseaseLower.includes("vertigo") || 
+      diseaseLower.includes("anxiety") || 
+      diseaseLower.includes("panic") || 
+      diseaseLower.includes("depressive") ||
+      diseaseLower.includes("burnout") ||
+      diseaseLower.includes("neuro") ||
+      diseaseLower.includes("stress")
+    ) {
+      displayThumbnail = "/images/diseases/stress-anxiety.png";
+    } else {
+      displayThumbnail = "/images/hero-bg.png";
+    }
+  }
+
   return (
     <section id="testimonials" className="py-16 sm:py-20 bg-[#F5FBF8] border-y border-border-main/20 relative overflow-hidden">
       <div className="custom-container space-y-12 sm:space-y-16">
@@ -88,9 +135,9 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
                 
                 {/* Left Side: Video Testimonial Preview */}
                 <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-border-main/10 flex items-center justify-center group shadow-soft-sm">
-                  {current.videoThumbnail ? (
+                  {displayThumbnail ? (
                     <Image
-                      src={current.videoThumbnail}
+                      src={displayThumbnail}
                       alt={current.patientName}
                       fill
                       sizes="(max-width: 1024px) 100vw, 400px"
