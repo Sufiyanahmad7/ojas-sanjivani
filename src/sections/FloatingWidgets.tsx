@@ -140,10 +140,10 @@ export function FloatingWidgets() {
         </div>
       </div>
 
-      {/* RIGHT WIDGET: AI Assistant Chat Trigger + Modal */}
+      {/* RIGHT WIDGET: AI Assistant Chat Trigger + Modal - Hidden as requested */}
+      {/*
       <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 md:bottom-6 md:right-6 z-[9999] flex flex-col items-end gap-4 pointer-events-none">
 
-        {/* Digital Assistant Chat Modal */}
         <AnimatePresence>
           {isAiOpen && (
             <motion.div
@@ -152,7 +152,6 @@ export function FloatingWidgets() {
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               className="w-[330px] sm:w-[360px] h-[450px] sm:h-[480px] bg-white rounded-2xl shadow-2xl border border-[#F3F4F6] flex flex-col overflow-hidden pointer-events-auto mb-2"
             >
-              {/* Header */}
               <div className="bg-[#028174] p-4 text-white flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center">
@@ -174,7 +173,6 @@ export function FloatingWidgets() {
                 </button>
               </div>
 
-              {/* Messages Area */}
               <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-[#F8FFF8]/40 custom-scrollbar">
                 {messages.map((msg) => (
                   <div
@@ -215,7 +213,6 @@ export function FloatingWidgets() {
                 <div ref={chatEndRef} />
               </div>
 
-              {/* Quick Replies */}
               {messages.length === 1 && (
                 <div className="px-4 py-2 flex flex-wrap gap-1.5 bg-[#F8FFF8]/40 border-t border-[#F3F4F6]/50">
                   {quickReplies.map((reply) => (
@@ -230,7 +227,6 @@ export function FloatingWidgets() {
                 </div>
               )}
 
-              {/* Input Form */}
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -256,7 +252,6 @@ export function FloatingWidgets() {
           )}
         </AnimatePresence>
 
-        {/* AI button inside interactive sub-container */}
         <div className="pointer-events-auto">
           <div className="relative group flex justify-end">
             <motion.button
@@ -279,7 +274,6 @@ export function FloatingWidgets() {
               <SupportAgentIcon className="w-8 h-8" />
             </motion.button>
 
-            {/* Hover Tooltip */}
             <span className="absolute right-full mr-3.5 top-1/2 -translate-y-1/2 bg-white text-[#1F2937] text-[10px] font-bold py-1.5 px-3 rounded-lg shadow-lg border border-[#F3F4F6] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 whitespace-nowrap">
               Support Assistant • Start a conversation
             </span>
@@ -287,6 +281,7 @@ export function FloatingWidgets() {
         </div>
 
       </div>
+      */}
     </>
   );
 }

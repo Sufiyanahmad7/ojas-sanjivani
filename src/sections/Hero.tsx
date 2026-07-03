@@ -122,8 +122,8 @@ export function Hero() {
                 className="rounded-full bg-white/80 border-[#028174]/40 text-[#028174] hover:bg-[#028174] hover:text-white flex items-center justify-center gap-2 px-6 h-11 text-xs font-bold transition-all duration-300 border backdrop-blur-sm"
                 onClick={(e) => {
                   e.preventDefault();
-                  const aiBtn = document.querySelector('[aria-label="Open Wellness Assistant"]') as HTMLButtonElement;
-                  if (aiBtn) aiBtn.click();
+                  const el = document.getElementById("digital-assistant");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
               >
                 <Bot className="w-3.5 h-3.5 shrink-0" />

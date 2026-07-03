@@ -2,6 +2,7 @@ import React from "react";
 import { Header } from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
 import { TrustIndicators } from "@/sections/TrustIndicators";
+import { TreatmentPhilosophy } from "@/sections/TreatmentPhilosophy";
 import { ServicesOverview } from "@/sections/ServicesOverview";
 import { Diseases } from "@/sections/Diseases";
 import { DigitalAssistantCallout } from "@/sections/DigitalAssistantCallout";
@@ -29,6 +30,9 @@ export default function Home() {
 
         {/* 4. Trust Indicators */}
         <TrustIndicators />
+
+        {/* Our Treatment Philosophy */}
+        <TreatmentPhilosophy />
 
         {/* 5. Ayurveda & Homeopathy Cards (Services Overview) */}
         <ServicesOverview />
