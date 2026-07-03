@@ -126,65 +126,79 @@ export function AppointmentBooking() {
       </AnimatePresence>
 
       <div className="custom-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center lg:items-stretch max-w-6xl mx-auto">
 
-          {/* LEFT SIDE: Narrative, Benefits & Phone CTA */}
+          {/* LEFT SIDE: Narrative, Benefits & Phone CTA with Background Image */}
           <motion.div
-            className="lg:col-span-5 space-y-6 text-center"
+            className="lg:col-span-5 relative rounded-[24px] overflow-hidden p-6 sm:p-8 md:p-10 text-white shadow-lg flex flex-col justify-between group border border-[#028174]/10 h-full"
+            style={{
+              backgroundImage: "url('/images/ayurveda-card-bg.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="space-y-3">
-              <Badge variant="success" className="py-1 px-3 bg-[#028174]/10 text-[#028174] border-[#028174]/20 mx-auto">
-                Book Free Consultation
-              </Badge>
-              <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#1E293B] leading-tight tracking-tight">
-                Schedule Your Free Consultation
-              </h2>
-              <p className="text-[#64748B] text-xs sm:text-sm leading-relaxed max-w-xl mx-auto">
-                Connect with certified Ayurveda and Homeopathy specialists for personalized treatment and expert guidance.
-              </p>
-            </div>
+            {/* Semi-transparent dark green overlay for readability */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#028174]/98 via-[#028174]/94 to-[#01695F]/98 z-0" />
+            
+            {/* Subtle light overlay bubble */}
+            <div className="absolute -top-12 -left-12 w-44 h-44 bg-white/10 rounded-full filter blur-2xl pointer-events-none z-0" />
 
-            {/* Benefit checklist points */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3.5 max-w-xs mx-auto text-left pt-2">
-              {benefits.map((benefit) => (
-                <div key={benefit} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#028174]/10 flex items-center justify-center text-[#028174] shrink-0">
-                    <Check className="w-3.5 h-3.5 stroke-[3]" />
-                  </div>
-                  <span className="text-xs sm:text-[13px] font-bold text-[#1E293B]">
-                    {benefit}
-                  </span>
+            <div className="relative z-10 space-y-6 flex-1 flex flex-col justify-between">
+              <div className="space-y-3.5 text-left">
+                <div className="inline-flex">
+                  <Badge variant="success" className="py-1 px-3 bg-white/15 text-white border-white/20">
+                    Book Free Consultation
+                  </Badge>
                 </div>
-              ))}
-            </div>
-
-            {/* Bottom Phone CTA Card */}
-            <div className="p-4.5 rounded-2xl bg-white border border-[#E2E8F0] flex items-center justify-center gap-3.5 shadow-sm max-w-sm mx-auto text-left mt-6">
-              <div className="w-10 h-10 rounded-full bg-[#028174]/10 flex items-center justify-center text-[#028174] shrink-0">
-                <Phone className="w-4.5 h-4.5 fill-[#028174]/10" />
+                <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-white leading-tight tracking-tight">
+                  Schedule Your Free Consultation
+                </h2>
+                <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
+                  Connect with certified Ayurveda and Homeopathy specialists for personalized treatment and expert guidance.
+                </p>
               </div>
-              <div>
-                <span className="text-[10px] text-[#64748B] font-bold uppercase tracking-wider block">Prefer booking over phone?</span>
-                <a href="tel:+919266714040" className="text-sm font-extrabold text-[#1E293B] hover:text-[#028174] transition-colors block mt-0.5">
-                  Call +91 92667 14040
-                </a>
+
+              {/* Benefit checklist points */}
+              <div className="space-y-3.5 pt-4 text-left">
+                {benefits.map((benefit) => (
+                  <div key={benefit} className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-white shrink-0">
+                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                    </div>
+                    <span className="text-xs sm:text-[13px] font-bold text-white">
+                      {benefit}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Bottom Phone CTA Card */}
+              <div className="p-4 rounded-xl bg-white/10 border border-white/15 flex items-center gap-3.5 shadow-sm max-w-sm text-left mt-6">
+                <div className="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center text-white shrink-0">
+                  <Phone className="w-4.5 h-4.5 fill-white/10" />
+                </div>
+                <div>
+                  <span className="text-[10px] text-white/70 font-bold uppercase tracking-wider block">Prefer booking over phone?</span>
+                  <a href="tel:+919266714040" className="text-sm font-extrabold text-white hover:text-[#92DE8B] transition-colors block mt-0.5">
+                    Call +91 92667 14040
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
 
-          {/* RIGHT SIDE: Redesigned Premium Form Card */}
           <motion.div
-            className="lg:col-span-7 w-full max-w-xl mx-auto"
+            className="lg:col-span-7 w-full max-w-xl mx-auto flex flex-col"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-white rounded-[24px] p-5 sm:p-6 border border-[#E2E8F0] shadow-md hover:border-[#028174]/40 transition-all duration-500">
+            <div className="bg-white rounded-[24px] p-5 sm:p-6 border border-[#E2E8F0] shadow-md hover:border-[#028174]/40 transition-all duration-500 h-full flex flex-col justify-between">
               <div className="mb-4">
                 <h3 className="text-xl font-extrabold text-[#1E293B] tracking-tight">
                   Book an Appointment
