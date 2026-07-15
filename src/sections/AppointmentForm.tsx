@@ -35,18 +35,44 @@ export function AppointmentForm() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("submitting");
-    setTimeout(() => {
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://ojassanjivani.rightbraininfotech.in";
+      const response = await fetch(`${apiUrl}/api/leads/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: formData.name,
+          mobileNumber: formData.phone,
+          email: formData.email,
+          category: formData.category,
+          preferredDate: formData.date,
+          slot: formData.slot,
+          healthConcern: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || "Failed to submit booking request");
+      }
+
       setFormStatus("success");
-    }, 2000);
+    } catch (error) {
+      console.error("Booking error:", error);
+      alert(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+      setFormStatus("idle");
+    }
   };
 
   return (
     <section id="appointment" className="py-12 sm:py-14 bg-mint/10 border-y border-border-main/30 relative">
       <div className="custom-container grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-        
+
         {/* Left Column: Directives & Trust */}
         <div className="lg:col-span-5 space-y-8 text-center lg:text-left lg:sticky lg:top-28">
           <div className="space-y-4">

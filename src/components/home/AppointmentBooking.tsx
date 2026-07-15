@@ -64,24 +64,41 @@ export function AppointmentBooking() {
   });
 
   const onSubmit = async (data: any) => {
-    // Simulate server request
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setSuccessName(data.fullName);
-    setShowToast(true);
-    reset({
-      fullName: "",
-      mobileNumber: "",
-      email: "",
-      healthConcern: "",
-      preferredConsultation: "Online Consultation",
-      preferredDate: todayString,
-      serviceType: "Ayurveda",
-      whatsAppUpdates: true,
-    });
-    // Auto-hide toast after 5 seconds
-    setTimeout(() => {
-      setShowToast(false);
-    }, 5000);
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://ojassanjivani.rightbraininfotech.in";
+      const response = await fetch(`${apiUrl}/api/leads/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || "Failed to submit booking request");
+      }
+
+      setSuccessName(data.fullName);
+      setShowToast(true);
+      reset({
+        fullName: "",
+        mobileNumber: "",
+        email: "",
+        healthConcern: "",
+        preferredConsultation: "Online Consultation",
+        preferredDate: todayString,
+        serviceType: "Ayurveda",
+        whatsAppUpdates: true,
+      });
+      // Auto-hide toast after 5 seconds
+      setTimeout(() => {
+        setShowToast(false);
+      }, 5000);
+    } catch (error) {
+      console.error("Booking error:", error);
+      alert(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+    }
   };
 
   const benefits = [
@@ -143,7 +160,7 @@ export function AppointmentBooking() {
           >
             {/* Semi-transparent dark green overlay for readability */}
             <div className="absolute inset-0 bg-gradient-to-br from-[#028174]/98 via-[#028174]/94 to-[#01695F]/98 z-0" />
-            
+
             {/* Subtle light overlay bubble */}
             <div className="absolute -top-12 -left-12 w-44 h-44 bg-white/10 rounded-full filter blur-2xl pointer-events-none z-0" />
 
@@ -220,8 +237,8 @@ export function AppointmentBooking() {
                       placeholder="Enter your name"
                       {...register("fullName")}
                       className={`w-full h-[46px] px-4 rounded-[14px] border bg-[#F8FAFC]/50 text-xs sm:text-sm font-medium focus:outline-none transition-all ${errors.fullName
-                          ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-[#E2E8F0] focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
+                        ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                        : "border-[#E2E8F0] focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
                         }`}
                     />
                     {errors.fullName && (
@@ -242,8 +259,8 @@ export function AppointmentBooking() {
                         placeholder="9876543210"
                         {...register("mobileNumber")}
                         className={`w-full h-[46px] pl-12 pr-4 rounded-[14px] border bg-[#F8FAFC]/50 text-xs sm:text-sm font-semibold tracking-wide focus:outline-none transition-all ${errors.mobileNumber
-                            ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-[#E2E8F0] focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
+                          ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                          : "border-[#E2E8F0] focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
                           }`}
                       />
                     </div>
@@ -264,8 +281,8 @@ export function AppointmentBooking() {
                       placeholder="name@example.com"
                       {...register("email")}
                       className={`w-full h-[46px] px-4 rounded-[14px] border bg-[#F8FAFC]/50 text-xs sm:text-sm font-medium focus:outline-none transition-all ${errors.email
-                          ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-[#E2E8F0] focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
+                        ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                        : "border-[#E2E8F0] focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
                         }`}
                     />
                     {errors.email && (
@@ -280,8 +297,8 @@ export function AppointmentBooking() {
                     <select
                       {...register("preferredConsultation")}
                       className={`w-full h-[46px] px-3.5 rounded-[14px] border bg-[#F8FAFC]/50 text-xs sm:text-sm font-medium focus:outline-none transition-all cursor-pointer ${errors.preferredConsultation
-                          ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-[#E2E8F0] focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
+                        ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                        : "border-[#E2E8F0] focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
                         }`}
                     >
                       <option value="Online Consultation">Online Consultation</option>
@@ -307,8 +324,8 @@ export function AppointmentBooking() {
                       min={todayString}
                       {...register("preferredDate")}
                       className={`w-full h-[46px] px-4 rounded-[14px] border bg-[#F8FAFC]/50 text-xs sm:text-sm font-medium focus:outline-none transition-all cursor-pointer ${errors.preferredDate
-                          ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-[#E2E8F0] focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
+                        ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                        : "border-[#E2E8F0] focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
                         }`}
                     />
                     {errors.preferredDate && (
@@ -351,8 +368,8 @@ export function AppointmentBooking() {
                     rows={2}
                     {...register("healthConcern")}
                     className={`w-full p-3.5 rounded-[14px] border bg-[#F8FAFC]/50 text-xs sm:text-sm font-medium focus:outline-none transition-all ${errors.healthConcern
-                        ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                        : "border-[#E2E8F0] focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
+                      ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                      : "border-[#E2E8F0] focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
                       }`}
                   />
                   {errors.healthConcern && (

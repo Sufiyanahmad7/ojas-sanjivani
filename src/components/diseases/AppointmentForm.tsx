@@ -69,24 +69,49 @@ export function AppointmentForm({ diseaseName }: AppointmentFormProps) {
   });
 
   const onSubmit = async (data: AppointmentFormValues) => {
-    // Simulate server request
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setSuccessName(data.fullName);
-    setShowToast(true);
-    reset({
-      fullName: "",
-      mobileNumber: "",
-      email: "",
-      disease: diseaseName,
-      preferredConsultation: "Online Consultation",
-      preferredDate: todayString,
-      message: "",
-      agreeToPolicy: true,
-    });
-    // Auto-hide toast after 5 seconds
-    setTimeout(() => {
-      setShowToast(false);
-    }, 5000);
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://ojassanjivani.rightbraininfotech.in";
+      const response = await fetch(`${apiUrl}/api/leads/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: data.fullName,
+          mobileNumber: data.mobileNumber,
+          email: data.email,
+          disease: data.disease,
+          preferredConsultation: data.preferredConsultation,
+          preferredDate: data.preferredDate,
+          healthConcern: data.message,
+        }),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || "Failed to submit booking request");
+      }
+
+      setSuccessName(data.fullName);
+      setShowToast(true);
+      reset({
+        fullName: "",
+        mobileNumber: "",
+        email: "",
+        disease: diseaseName,
+        preferredConsultation: "Online Consultation",
+        preferredDate: todayString,
+        message: "",
+        agreeToPolicy: true,
+      });
+      // Auto-hide toast after 5 seconds
+      setTimeout(() => {
+        setShowToast(false);
+      }, 5000);
+    } catch (error) {
+      console.error("Booking error:", error);
+      alert(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+    }
   };
 
   const benefits = [
@@ -99,7 +124,7 @@ export function AppointmentForm({ diseaseName }: AppointmentFormProps) {
   return (
     <section id="appointment-form" className="py-16 sm:py-20 bg-white border-t border-border-main/20 scroll-mt-[108px] relative overflow-hidden text-left">
       <div className="absolute top-1/3 right-[-10%] w-96 h-96 rounded-full bg-[#028174]/4 filter blur-[100px] pointer-events-none -z-10" />
-      
+
       {/* Success Toast */}
       <AnimatePresence>
         {showToast && (
@@ -130,7 +155,7 @@ export function AppointmentForm({ diseaseName }: AppointmentFormProps) {
 
       <div className="custom-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
-          
+
           {/* LEFT SIDE: Benefits list */}
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-3">
@@ -186,7 +211,7 @@ export function AppointmentForm({ diseaseName }: AppointmentFormProps) {
               </div>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                
+
                 {/* Full Name & Mobile */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
@@ -197,11 +222,10 @@ export function AppointmentForm({ diseaseName }: AppointmentFormProps) {
                       type="text"
                       placeholder="Enter your name"
                       {...register("fullName")}
-                      className={`w-full h-11 px-4 rounded-xl border bg-[#F8FAFC]/50 text-xs sm:text-sm font-medium focus:outline-none transition-all ${
-                        errors.fullName
-                          ? "border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-border-main focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
-                      }`}
+                      className={`w-full h-11 px-4 rounded-xl border bg-[#F8FAFC]/50 text-xs sm:text-sm font-medium focus:outline-none transition-all ${errors.fullName
+                        ? "border-red-500 focus:ring-1 focus:ring-red-500"
+                        : "border-border-main focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
+                        }`}
                     />
                     {errors.fullName && (
                       <p className="text-[10px] font-bold text-red-500 mt-1">{errors.fullName.message}</p>
@@ -220,11 +244,10 @@ export function AppointmentForm({ diseaseName }: AppointmentFormProps) {
                         type="tel"
                         placeholder="9876543210"
                         {...register("mobileNumber")}
-                        className={`w-full h-11 pl-12 pr-4 rounded-xl border bg-[#F8FAFC]/50 text-xs sm:text-sm font-semibold tracking-wide focus:outline-none transition-all ${
-                          errors.mobileNumber
-                            ? "border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-border-main focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
-                        }`}
+                        className={`w-full h-11 pl-12 pr-4 rounded-xl border bg-[#F8FAFC]/50 text-xs sm:text-sm font-semibold tracking-wide focus:outline-none transition-all ${errors.mobileNumber
+                          ? "border-red-500 focus:ring-1 focus:ring-red-500"
+                          : "border-border-main focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
+                          }`}
                       />
                     </div>
                     {errors.mobileNumber && (
@@ -243,11 +266,10 @@ export function AppointmentForm({ diseaseName }: AppointmentFormProps) {
                       type="email"
                       placeholder="name@example.com"
                       {...register("email")}
-                      className={`w-full h-11 px-4 rounded-xl border bg-[#F8FAFC]/50 text-xs sm:text-sm font-medium focus:outline-none transition-all ${
-                        errors.email
-                          ? "border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-border-main focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
-                      }`}
+                      className={`w-full h-11 px-4 rounded-xl border bg-[#F8FAFC]/50 text-xs sm:text-sm font-medium focus:outline-none transition-all ${errors.email
+                        ? "border-red-500 focus:ring-1 focus:ring-red-500"
+                        : "border-border-main focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
+                        }`}
                     />
                     {errors.email && (
                       <p className="text-[10px] font-bold text-red-500 mt-1">{errors.email.message}</p>
@@ -314,11 +336,10 @@ export function AppointmentForm({ diseaseName }: AppointmentFormProps) {
                     placeholder="Briefly describe your symptoms or case history (minimum 10 characters)..."
                     rows={3}
                     {...register("message")}
-                    className={`w-full p-4 rounded-xl border bg-[#F8FAFC]/50 text-xs sm:text-sm font-medium focus:outline-none transition-all ${
-                      errors.message
-                        ? "border-red-500 focus:ring-1 focus:ring-red-500"
-                        : "border-border-main focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
-                    }`}
+                    className={`w-full p-4 rounded-xl border bg-[#F8FAFC]/50 text-xs sm:text-sm font-medium focus:outline-none transition-all ${errors.message
+                      ? "border-red-500 focus:ring-1 focus:ring-red-500"
+                      : "border-border-main focus:border-[#028174] focus:ring-1 focus:ring-[#028174] focus:bg-white"
+                      }`}
                   />
                   {errors.message && (
                     <p className="text-[10px] font-bold text-red-500 mt-1">{errors.message.message}</p>
@@ -345,8 +366,8 @@ export function AppointmentForm({ diseaseName }: AppointmentFormProps) {
 
                 {/* Submit button */}
                 <div className="pt-2">
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     disabled={isSubmitting}
                     variant="primary"
                     className="w-full h-11 text-xs sm:text-sm font-bold text-white border-0 hover:opacity-90 flex items-center justify-center gap-2"
@@ -358,7 +379,7 @@ export function AppointmentForm({ diseaseName }: AppointmentFormProps) {
                       <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                     ) : (
                       <>
-                        Book Free Consultation 
+                        Book Free Consultation
                         <ArrowRight className="w-4 h-4" />
                       </>
                     )}

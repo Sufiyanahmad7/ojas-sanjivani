@@ -93,11 +93,11 @@ export default function RootLayout({
       >
         {children}
         <Script
-          src="https://ojassanjivani.rightbraininfotech.in/im_livechat/loader/1"
+          src="http://localhost:8050/im_livechat/loader/1"
           strategy="beforeInteractive"
         />
         <Script
-          src="https://ojassanjivani.rightbraininfotech.in/im_livechat/assets_embed.js"
+          src="http://localhost:8050/im_livechat/assets_embed.js"
           strategy="beforeInteractive"
         />
       </body>
